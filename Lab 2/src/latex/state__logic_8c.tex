@@ -1,0 +1,52 @@
+\hypertarget{state__logic_8c}{\section{state\-\_\-logic.\-c File Reference}
+\label{state__logic_8c}\index{state\-\_\-logic.\-c@{state\-\_\-logic.\-c}}
+}
+
+
+Implementation of the state logic functionality.  
+
+
+{\ttfamily \#include \char`\"{}stm32f4xx.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stm32f4xx\-\_\-conf.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}state\-\_\-logic.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}led\-\_\-control.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{state__logic_8c_ab2adc914b582216030744b4bb58c4079}{Button\-\_\-\-State} (int pin, B\-U\-T\-T\-O\-N $\ast$button\-\_\-state, S\-Y\-S\-T\-E\-M $\ast$system\-\_\-state, \hyperlink{led__control_8h_aadcb6002d2b42fdfe01490f730ab00a6}{L\-E\-D} $\ast$led\-\_\-state)
+\begin{DoxyCompactList}\small\item\em State logic for updating the system and button states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{state__logic_8c_aa530aff4c01ac82a892008755f9c3d2c}{float {\bfseries led\-\_\-strength}}\label{state__logic_8c_aa530aff4c01ac82a892008755f9c3d2c}
+
+\item 
+\hypertarget{state__logic_8c_a812fc3951a4aea6bf9b3b9f2d725ca8b}{const uint16\-\_\-t {\bfseries F\-R\-E\-Q}}\label{state__logic_8c_a812fc3951a4aea6bf9b3b9f2d725ca8b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the state logic functionality. \begin{DoxyAuthor}{Author}
+Ben Swearingen \href{mailto:benjamin.swearingen@mail.mcgill.ca}{\tt benjamin.\-swearingen@mail.\-mcgill.\-ca} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{state__logic_8c_ab2adc914b582216030744b4bb58c4079}{\index{state\-\_\-logic.\-c@{state\-\_\-logic.\-c}!Button\-\_\-\-State@{Button\-\_\-\-State}}
+\index{Button\-\_\-\-State@{Button\-\_\-\-State}!state_logic.c@{state\-\_\-logic.\-c}}
+\subsubsection[{Button\-\_\-\-State}]{\setlength{\rightskip}{0pt plus 5cm}void Button\-\_\-\-State (
+\begin{DoxyParamCaption}
+\item[{int}]{pin, }
+\item[{B\-U\-T\-T\-O\-N $\ast$}]{button\-\_\-state, }
+\item[{S\-Y\-S\-T\-E\-M $\ast$}]{system\-\_\-state, }
+\item[{{\bf L\-E\-D} $\ast$}]{led\-\_\-state}
+\end{DoxyParamCaption}
+)}}\label{state__logic_8c_ab2adc914b582216030744b4bb58c4079}
+
+
+State logic for updating the system and button states. 
+
+\begin{DoxyNote}{Note}
+This implements a basic F\-S\-M for updating the button and system states. The system can either be in read\-\_\-temp mode or P\-W\-M mode. The button can either be in On, Off, or On/\-Off\-\_\-in\-\_\-run mode. The In\-\_\-\-Run states are necessary because the button generates a string of 1's when pressed. Having these two states avoids repeated 1's triggering system state changes. When the state is from Read\-\_\-\-Temp, the Sys\-Tick clock is sped up for P\-W\-M, and all the L\-E\-Ds are turned off. When the state is changed from P\-W\-M, the Sys\-Tick clock is reset, and the proper L\-E\-D is light for the current L\-E\-D state. 
+\end{DoxyNote}

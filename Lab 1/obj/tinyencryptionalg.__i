@@ -1,0 +1,5 @@
+-c --cpu Cortex-M4 -g -O0 --apcs=interwork 
+-I C:\Keil\ARM\RV31\INC 
+-I C:\Keil\ARM\CMSIS\Include 
+-I C:\Keil\ARM\Inc\ST\STM32F4xx 
+-o ".\obj\tinyencryptionalg.o" --omf_browse ".\obj\tinyencryptionalg.crf" --depend ".\obj\tinyencryptionalg.d" "C\tinyEncryptionAlg.c"

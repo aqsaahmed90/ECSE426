@@ -1,0 +1,388 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             algorithms, CODE, READONLY
+    2 00000000                 IMPORT           encodedArray
+    3 00000000                 EXPORT           encryptAssemblyWrapper
+    4 00000000                 EXPORT           decryptAssemblyWrapper
+    5 00000000         
+    6 00000000         
+    7 00000000         encryptAssemblyWrapper
+    8 00000000         ;Loop through array and call encrypt
+    9 00000000         ;R11 = encodedArray's address
+   10 00000000 F8DF B120       LDR              R11, =encodedArray ;Address of 
+                                                            the space made stor
+                                                            ed in R11
+   11 00000004 BC3C            POP              {R2-R5}     ;Pop the keys off o
+                                                            f the stack
+   12 00000006 BC03            POP{R0,          R1}         ;Pop off the first 
+                                                            two words
+   13 00000008 B500            PUSH{LR}                     ;Save context of LR
+                                                            
+   14 0000000A         
+   15 0000000A         ;Loop based off of how char arrays in C work. Loop until
+                        encountering a 0x00 in the last bits of R0
+   16 0000000A         EncWrapLoop
+   17 0000000A         ;Need register for =Encrypt, Test Section, D0, D1
+   18 0000000A         ;R12 = Tester register
+   19 0000000A         ;R11 = Position in encodedArray
+   20 0000000A         ;R10 = Encrypt
+   21 0000000A         ;R0 = D0, D0_Next
+   22 0000000A         ;R1 = D1, D1_Next
+   23 0000000A F8DF A11C       LDR              R10, =Encrypt ;Load Encrypt's a
+                                                            ddress into R10
+   24 0000000E 47D0            BLX              R10         ;Branch to Encrypt
+   25 00000010 F8CB 0000       STR              R0, [R11]   ;Store R0 in encode
+                                                            dArray
+   26 00000014 F8CB 1004       STR              R1, [R11, #4] ;Store R1 in enco
+                                                            dedArray
+   27 00000018 F10B 0B08       ADD              R11, R11, #8 ;Advance position 
+                                                            in encodedArray by 
+                                                            4
+   28 0000001C F85D EB04       POP{LR}                      ;Get LR out of the 
+                                                            way of the next two
+                                                             words       
+   29 00000020 BC03            POP              {R0,R1}     ;Pop next two words
+                                                             off of the stack
+   30 00000022 B500            PUSH{LR}                     ;Resave the context
+                                                             of LR
+   31 00000024         
+   32 00000024         ;Test Section
+   33 00000024 4684            MOV              R12, R0     ;Move the first wor
+                                                            d into R12
+   34 00000026 F00C 0CFF       AND              R12, R12, #0x000000FF ;R12 = R1
+                                                            2 AND 0x000000FF
+   35 0000002A F1BC 0F00       CMP              R12, #0     ;If result is 0, we
+                                                            've reached the end
+                                                             of the character a
+                                                            rray (last char in 
+                                                            char[] is 0x00)
+   36 0000002E D1EC            BNE              EncWrapLoop ;If they're not equ
+                                                            al, back to the top
+                                                            
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   37 00000030 B43C            PUSH{R2-R5}                  ;Store keys on stac
+                                                            k for return to C
+   38 00000032 4770            BX               LR          ;Branch to original
+                                                             LR
+   39 00000034         
+   40 00000034         Encrypt
+   41 00000034         ;STILL TO DO: OPTIMIZE
+   42 00000034 E92D 1800       PUSH{R11,        R12}        ;Save context of wr
+                                                            apper
+   43 00000038 F8DF C0F0       LDR              R12, =0x9E3779B9 ;Move delta in
+                                                            to R12
+   44 0000003C         ;MOV R12, #0x79B9
+   45 0000003C         ;MOVT R12, #0x9E37    ;R12 = delta
+   46 0000003C F04F 0B00       MOV              R11, #0     ;R11 = sum
+   47 00000040 F04F 0A20       MOV              R10, #32    ;R10 = count = 32 i
+                                                            nitially
+   48 00000044         
+   49 00000044         ;R0 = MESSAGE 0 (D0)
+   50 00000044         ;R1 = MESSAGE 1 (D1)
+   51 00000044         ;R2 = KEY 0
+   52 00000044         ;R3 = KEY 1
+   53 00000044         ;R4 = KEY 2
+   54 00000044         ;R5 = KEY 3
+   55 00000044         ;R6 = T4
+   56 00000044         ;R7 = Scratch register (ends up representing T2 and T3)
+   57 00000044         EncLoop
+   58 00000044 44E3            ADD              R11, R11, R12 
+                                                            ;Sum = sum + delta
+   59 00000046 EA4F 1601       LSL              R6, R1, #4  ;Shift D1 left 4, p
+                                                            ut in T4
+   60 0000004A 4416            ADD              R6, R6, R2  ;Add K0 to T4. T4 n
+                                                            ow equal to T1
+   61 0000004C EA4F 1751       LSR              R7, R1, #5  ;Shift D1 right 5 a
+                                                            nd put in T_Scratch
+                                                            
+   62 00000050 441F            ADD              R7, R7, R3  ;Add K1 to T_Scratc
+                                                            h. T_Scratch now eq
+                                                            ual to T2
+   63 00000052 EA86 0607       EOR              R6, R6, R7  ;T4 = T4(Now eq T1)
+                                                             XOR T_Scratch(Now 
+                                                            eq T2)
+   64 00000056 EB01 070B       ADD              R7, R1, R11 ;T_Scratch = D1 + S
+                                                            um. T_Scratch now e
+                                                            q to T3
+   65 0000005A EA86 0607       EOR              R6, R6, R7  ;T4 = T4 XOR T_Scra
+                                                            tch(Now eq T3)
+   66 0000005E 4430            ADD              R0, R0, R6  ;D0 = D0 + T4
+   67 00000060         ;End D0 Section
+   68 00000060 EA4F 1600       LSL              R6, R0, #4  ;Shift D0 left 4, p
+                                                            ut in T4
+   69 00000064 4426            ADD              R6, R6, R4  ;ADD K2 TO T4. T4 n
+                                                            ow eq T1
+   70 00000066 EA4F 1750       LSR              R7, R0, #5  ;SHIFT D0 RIGHT 5, 
+                                                            PUT IN T_Scratch
+   71 0000006A 442F            ADD              R7, R7, R5  ;ADD K3 TO T_Scratc
+                                                            h. T_Scratch now eq
+                                                             T2
+   72 0000006C EA86 0607       EOR              R6, R6, R7  ;T4 = T4(Now eq T1)
+                                                             XOR T_Scratch(Now 
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+                                                            eq T2) 
+   73 00000070 EB00 070B       ADD              R7, R0, R11 ;T_Scratch = D0 + S
+                                                            UM. T_Scratch now e
+                                                            q T3
+   74 00000074 EA86 0607       EOR              R6, R6, R7  ;T4 = T4 XOR T_Scra
+                                                            tch(Now eq T3)
+   75 00000078 4431            ADD              R1, R1, R6  ;D1 = D1 + T4
+   76 0000007A         ;End D1 Section
+   77 0000007A F1AA 0A01       SUB              R10, R10, #1 ;COUNT--
+   78 0000007E F1BA 0F00       CMP              R10, #0     ;IF COUNT != 0
+   79 00000082 D1DF            BNE              EncLoop     ;BRANCH EncLoop
+   80 00000084 F8DF C0A8       LDR              R12, =EndEnc
+   81 00000088 4760            BX               R12
+   82 0000008A         
+   83 0000008A         decryptAssemblyWrapper
+   84 0000008A F8DF B098       LDR              R11, =encodedArray ;Store addre
+                                                            ss of encodedArray
+   85 0000008E BC3C            POP              {R2-R5}     ;Pop keys off of st
+                                                            ack
+   86 00000090 F8DB 0000       LDR              R0, [R11]   ;Load first word fr
+                                                            om encodedArray
+   87 00000094 F8DB 1004       LDR              R1, [R11, #4] ;Load second word
+                                                            
+   88 00000098 B500            PUSH{LR}
+   89 0000009A         DecWrapLoop
+   90 0000009A F8DF A098       LDR              R10, =Decrypt ;Store Decrypt ad
+                                                            dress
+   91 0000009E 47D0            BLX              R10         ;Branch there
+   92 000000A0 F8CB 0000       STR              R0, [R11]   ;Overwrite encoded 
+                                                            first word
+   93 000000A4 F8CB 1004       STR              R1, [R11,#4] ;Overwrite encoded
+                                                             second word
+   94 000000A8 F10B 0B08       ADD              R11, R11, #8 ;Advance two words
+                                                             in encodedArray
+   95 000000AC F8DB 0000       LDR              R0, [R11]   ;Load first word
+   96 000000B0 F8DB 1004       LDR              R1, [R11, #4] ;Load second word
+                                                            
+   97 000000B4 4684            MOV              R12, R0     ;Move first word in
+                                                            to R12
+   98 000000B6 F00C 0CFF       AND              R12, R12, #0x000000FF ;R12 = R1
+                                                            2 AND 0x000000FF
+   99 000000BA F1BC 0F00       CMP              R12, #0     ;R12==0?
+  100 000000BE D1EC            BNE              DecWrapLoop ;If not, back to De
+                                                            cWrapLoop
+  101 000000C0 F85D EB04       POP{LR}
+  102 000000C4 B43C            PUSH{R2-R5}                  ;Store keys on stac
+                                                            k for return to C
+  103 000000C6 4770            BX               LR          ;If true, back to L
+                                                            R stored above
+  104 000000C8         
+  105 000000C8         Decrypt
+  106 000000C8 E92D 1800       PUSH{R11,        R12}        ;Save context of wr
+                                                            apper
+  107 000000CC F8DF C05C       LDR              R12, =0x9E3779B9 ;Move delta in
+                                                            to R12
+  108 000000D0         ;MOV R12, #0x79B9
+  109 000000D0         ;MOVT R12, #0x9E37    ;R12 = delta
+  110 000000D0         ;MOV R11, #0x3720    ;R11 = sum
+  111 000000D0         ;MOVT R11, #0xC6EF
+
+
+
+ARM Macro Assembler    Page 4 
+
+
+  112 000000D0 F8DF B064       LDR              R11, =0xC6EF3720 ;Move delta in
+                                                            to R12
+  113 000000D4 F04F 0A20       MOV              R10, #32    ;R10 = count = 32 i
+                                                            nitially
+  114 000000D8         
+  115 000000D8         DecLoop
+  116 000000D8         ;R0 = MESSAGE 0 (D0)
+  117 000000D8         ;R1 = MESSAGE 1 (D1)
+  118 000000D8         ;R2 = KEY 0
+  119 000000D8         ;R3 = KEY 1
+  120 000000D8         ;R4 = KEY 2
+  121 000000D8         ;R5 = KEY 3
+  122 000000D8         ;R6 = T4
+  123 000000D8         ;R7 = T_Scratch
+  124 000000D8 EA4F 1600       LSL              R6, R0, #4  ;Shift D0 left by 4
+                                                             and put into T4
+  125 000000DC 4426            ADD              R6, R6, R4  ;Add K2 to T1. At t
+                                                            his point T4 = T1
+  126 000000DE EA4F 1750       LSR              R7, R0, #5  ;Shift D0 right 5 a
+                                                            nd put in T_Scratch
+                                                            
+  127 000000E2 442F            ADD              R7, R7, R5  ;Add K3 to T_Scratc
+                                                            h. T_Scratch = T2
+  128 000000E4 EA86 0607       EOR              R6, R6, R7  ;T4 = T4 XOR T_Scra
+                                                            tch(T2)
+  129 000000E8 EB00 070B       ADD              R7, R0, R11 ; T_Scratch = D0 + 
+                                                            sum = T3
+  130 000000EC EA86 0607       EOR              R6, R6, R7  ;T4 = T4 XOR T_Scra
+                                                            tch(Now eq T3)
+  131 000000F0 EBA1 0106       SUB              R1, R1, R6  ;D1 = D1-T4
+  132 000000F4         ;End D1 section
+  133 000000F4         
+  134 000000F4 EA4F 1601       LSL              R6, R1, #4  ;Shift D1 left by 4
+                                                             and place into T4
+  135 000000F8 4416            ADD              R6, R6, R2  ;Add K0 to T4. T4 n
+                                                            ow eq T1
+  136 000000FA EA4F 1751       LSR              R7, R1, #5  ;Shift D1 right by 
+                                                            5 and place into T_
+                                                            Scratch
+  137 000000FE 441F            ADD              R7, R7, R3  ;Add K1 to T_Scratc
+                                                            h. T_Scratch now eq
+                                                             T2
+  138 00000100 EA86 0607       EOR              R6, R6, R7  ;T4 = T4 XOR T_Scra
+                                                            tch(T2)
+  139 00000104 EB01 070B       ADD              R7, R1, R11 ;T_Scratch=D1+sum. 
+                                                            T_Scratch now eq T3
+                                                            
+  140 00000108 EA86 0607       EOR              R6, R6, R7  ;T4 = T4 XOR T_Scra
+                                                            tch(T3)
+  141 0000010C EBA0 0006       SUB              R0, R0, R6  ;D0 = D0-T4
+  142 00000110         ;End D0 section
+  143 00000110 EBAB 0B0C       SUB              R11, R11, R12 ;Sum = sum-delta
+  144 00000114 F1AA 0A01       SUB              R10, R10, #1 ;COUNT--
+  145 00000118 F1BA 0F00       CMP              R10, #0     ;IF COUNT != 0
+  146 0000011C D1DC            BNE              DecLoop     ;BRANCH EncLoop
+  147 0000011E         EndEnc
+  148 0000011E E8BD 1800       POP{R11,         R12}
+  149 00000122 4770            BX               LR
+  150 00000124         ;Ending stuff here, probably same for decrypt
+
+
+
+ARM Macro Assembler    Page 5 
+
+
+  151 00000124         ;message DCB "Stufuf"
+  152 00000124                 END
+              00000000 
+              00000000 
+              9E3779B9 
+              00000000 
+              00000000 
+              C6EF3720 
+Command Line: --debug --xref --cpu=Cortex-M4 --apcs=interwork --depend=.\obj\as
+semblyBits.d -o.\obj\assemblyBits.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\
+Include -IC:\Keil\ARM\Inc\ST\STM32F4xx --list=.\lst\assemblyBits.lst Assembly\a
+ssemblyBits.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DecLoop 000000D8
+
+Symbol: DecLoop
+   Definitions
+      At line 115 in file Assembly\assemblyBits.s
+   Uses
+      At line 146 in file Assembly\assemblyBits.s
+Comment: DecLoop used once
+DecWrapLoop 0000009A
+
+Symbol: DecWrapLoop
+   Definitions
+      At line 89 in file Assembly\assemblyBits.s
+   Uses
+      At line 100 in file Assembly\assemblyBits.s
+Comment: DecWrapLoop used once
+Decrypt 000000C8
+
+Symbol: Decrypt
+   Definitions
+      At line 105 in file Assembly\assemblyBits.s
+   Uses
+      At line 90 in file Assembly\assemblyBits.s
+Comment: Decrypt used once
+EncLoop 00000044
+
+Symbol: EncLoop
+   Definitions
+      At line 57 in file Assembly\assemblyBits.s
+   Uses
+      At line 79 in file Assembly\assemblyBits.s
+Comment: EncLoop used once
+EncWrapLoop 0000000A
+
+Symbol: EncWrapLoop
+   Definitions
+      At line 16 in file Assembly\assemblyBits.s
+   Uses
+      At line 36 in file Assembly\assemblyBits.s
+Comment: EncWrapLoop used once
+Encrypt 00000034
+
+Symbol: Encrypt
+   Definitions
+      At line 40 in file Assembly\assemblyBits.s
+   Uses
+      At line 23 in file Assembly\assemblyBits.s
+Comment: Encrypt used once
+EndEnc 0000011E
+
+Symbol: EndEnc
+   Definitions
+      At line 147 in file Assembly\assemblyBits.s
+   Uses
+      At line 80 in file Assembly\assemblyBits.s
+Comment: EndEnc used once
+algorithms 00000000
+
+Symbol: algorithms
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+   Definitions
+      At line 1 in file Assembly\assemblyBits.s
+   Uses
+      None
+Comment: algorithms unused
+decryptAssemblyWrapper 0000008A
+
+Symbol: decryptAssemblyWrapper
+   Definitions
+      At line 83 in file Assembly\assemblyBits.s
+   Uses
+      At line 4 in file Assembly\assemblyBits.s
+Comment: decryptAssemblyWrapper used once
+encryptAssemblyWrapper 00000000
+
+Symbol: encryptAssemblyWrapper
+   Definitions
+      At line 7 in file Assembly\assemblyBits.s
+   Uses
+      At line 3 in file Assembly\assemblyBits.s
+Comment: encryptAssemblyWrapper used once
+10 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+encodedArray 00000000
+
+Symbol: encodedArray
+   Definitions
+      At line 2 in file Assembly\assemblyBits.s
+   Uses
+      At line 10 in file Assembly\assemblyBits.s
+      At line 84 in file Assembly\assemblyBits.s
+
+1 symbol
+343 symbols in table

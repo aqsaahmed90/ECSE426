@@ -1,0 +1,6 @@
+-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\src -I.\STM32F4xx_StdPeriph_Driver\inc --c99 
+-I C:\Keil\ARM\RV31\INC 
+-I C:\Keil\ARM\CMSIS\Include 
+-I C:\Keil\ARM\Inc\ST\STM32F4xx 
+-DHSE_VALUE="8000000" -DUSE_STDPERIPH_DRIVER -DSTM32F40XX 
+-o ".\obj\main.o" --omf_browse ".\obj\main.crf" --depend ".\obj\main.d" "src\main.c"

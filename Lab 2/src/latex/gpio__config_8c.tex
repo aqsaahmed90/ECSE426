@@ -1,0 +1,46 @@
+\hypertarget{gpio__config_8c}{\section{gpio\-\_\-config.\-c File Reference}
+\label{gpio__config_8c}\index{gpio\-\_\-config.\-c@{gpio\-\_\-config.\-c}}
+}
+
+
+Implementation of the G\-P\-I\-O functionality.  
+
+
+{\ttfamily \#include \char`\"{}stm32f4xx.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stm32f4xx\-\_\-conf.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{gpio__config_8c_ab99012e67106261a301160b71aa256c0}{G\-P\-I\-O\-\_\-\-Configuration} (G\-P\-I\-O\-\_\-\-Init\-Type\-Def $\ast$G\-P\-I\-O\-\_\-\-Init\-Structure, G\-P\-I\-O\-\_\-\-Init\-Type\-Def $\ast$B\-U\-T\-T\-O\-N\-\_\-\-Init\-Structure)
+\begin{DoxyCompactList}\small\item\em Configures and initializes all G\-P\-I\-O objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the G\-P\-I\-O functionality. \begin{DoxyAuthor}{Author}
+Ben Swearingen \href{mailto:benjamin.swearingen@mail.mcgill.ca}{\tt benjamin.\-swearingen@mail.\-mcgill.\-ca} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{gpio__config_8c_ab99012e67106261a301160b71aa256c0}{\index{gpio\-\_\-config.\-c@{gpio\-\_\-config.\-c}!G\-P\-I\-O\-\_\-\-Configuration@{G\-P\-I\-O\-\_\-\-Configuration}}
+\index{G\-P\-I\-O\-\_\-\-Configuration@{G\-P\-I\-O\-\_\-\-Configuration}!gpio_config.c@{gpio\-\_\-config.\-c}}
+\subsubsection[{G\-P\-I\-O\-\_\-\-Configuration}]{\setlength{\rightskip}{0pt plus 5cm}void G\-P\-I\-O\-\_\-\-Configuration (
+\begin{DoxyParamCaption}
+\item[{G\-P\-I\-O\-\_\-\-Init\-Type\-Def $\ast$}]{G\-P\-I\-O\-\_\-\-Init\-Structure, }
+\item[{G\-P\-I\-O\-\_\-\-Init\-Type\-Def $\ast$}]{B\-U\-T\-T\-O\-N\-\_\-\-Init\-Structure}
+\end{DoxyParamCaption}
+)}}\label{gpio__config_8c_ab99012e67106261a301160b71aa256c0}
+
+
+Configures and initializes all G\-P\-I\-O objects. 
+
+\begin{DoxyNote}{Note}
+Enables the clocks to G\-P\-I\-O\-D and G\-P\-I\-O\-A. Then configures the structure representing the L\-E\-Ds by assigning it the values of the L\-E\-D pins, setting the Mode to output, setting it to push pull, configuring the speed, and setting it to have no push/pull resistor. Open Drain does not activate the L\-E\-Ds. Then configures and initializes the structure representing the Button. It is set to the correct pin, input mode, pull down, and the speed remains at default.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$\-G\-P\-I\-O\-\_\-\-Init\-Structure} & A pointer to a G\-P\-I\-O\-\_\-\-Init\-Type\-Def structure that represents the L\-E\-Ds. \\
+\hline
+{\em $\ast$\-B\-U\-T\-T\-O\-N\-\_\-\-Init\-Structure} & A pointer to a G\-P\-I\-O\-\_\-\-Init\-Type\-Def structure that represents the button. \\
+\hline
+\end{DoxyParams}

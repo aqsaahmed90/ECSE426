@@ -1,0 +1,108 @@
+\hypertarget{main_8c}{\section{main.\-c File Reference}
+\label{main_8c}\index{main.\-c@{main.\-c}}
+}
+
+
+Implementation of the functionality required for Lab 2.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}stm32f4xx.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stm32f4xx\-\_\-conf.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}adc\-\_\-config.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}filter\-\_\-config.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}gpio\-\_\-config.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}led\-\_\-control.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}state\-\_\-logic.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8c_ab5e09814056d617c521549e542639b7e}{Sys\-Tick\-\_\-\-Handler} (void)
+\begin{DoxyCompactList}\small\item\em Handles the Sys\-Tick interupt. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a14525df898cb434fadc39aac203de11e}{delay} (float duty\-\_\-cycle)
+\begin{DoxyCompactList}\small\item\em Delays for a fraction of the complete cycle. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\begin{DoxyCompactList}\small\item\em Initializes all necessary structures and loops forever. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{main_8c_a812fc3951a4aea6bf9b3b9f2d725ca8b}{const uint16\-\_\-t {\bfseries F\-R\-E\-Q} = 20}\label{main_8c_a812fc3951a4aea6bf9b3b9f2d725ca8b}
+
+\item 
+\hypertarget{main_8c_a04134de5adffbfd8b21e5a2ab4db67a1}{const uint16\-\_\-t {\bfseries D} = 6}\label{main_8c_a04134de5adffbfd8b21e5a2ab4db67a1}
+
+\item 
+\hypertarget{main_8c_aca24f75ff8fbf6e335ea4643addc0957}{\hyperlink{struct_lowpass___filter}{Lowpass\-\_\-\-Filter} {\bfseries Filter\-\_\-\-Structure}}\label{main_8c_aca24f75ff8fbf6e335ea4643addc0957}
+
+\item 
+\hypertarget{main_8c_a58d8a7f3700f34e7226b33e61f5ed960}{G\-P\-I\-O\-\_\-\-Init\-Type\-Def {\bfseries G\-P\-I\-O\-\_\-\-Init\-Structure}}\label{main_8c_a58d8a7f3700f34e7226b33e61f5ed960}
+
+\item 
+\hypertarget{main_8c_a673e073c63b1240dcafb2ab49a2fd352}{G\-P\-I\-O\-\_\-\-Init\-Type\-Def {\bfseries B\-U\-T\-T\-O\-N\-\_\-\-Init\-Structure}}\label{main_8c_a673e073c63b1240dcafb2ab49a2fd352}
+
+\item 
+\hypertarget{main_8c_a5a097ad4ca2c76a26796a02a039692b2}{A\-D\-C\-\_\-\-Common\-Init\-Type\-Def {\bfseries A\-D\-C\-\_\-\-Common\-\_\-\-Init\-Structure}}\label{main_8c_a5a097ad4ca2c76a26796a02a039692b2}
+
+\item 
+\hypertarget{main_8c_a1bc817390b4299e36ea60fff85e6df6b}{A\-D\-C\-\_\-\-Init\-Type\-Def {\bfseries A\-D\-C\-\_\-\-Init\-Structure}}\label{main_8c_a1bc817390b4299e36ea60fff85e6df6b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the functionality required for Lab 2. \begin{DoxyAuthor}{Author}
+Ben Swearingen \href{mailto:benjamin.swearingen@mail.mcgill.ca}{\tt benjamin.\-swearingen@mail.\-mcgill.\-ca}
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+This project reads in values from the temperature sensor, converts them with an A\-D\-C, and rotates an L\-E\-D accordingly. It also has the ability to pulse the L\-E\-D's using a software implementation of pulse width modulation. 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\hypertarget{main_8c_a14525df898cb434fadc39aac203de11e}{\index{main.\-c@{main.\-c}!delay@{delay}}
+\index{delay@{delay}!main.c@{main.\-c}}
+\subsubsection[{delay}]{\setlength{\rightskip}{0pt plus 5cm}void delay (
+\begin{DoxyParamCaption}
+\item[{float}]{duty\-\_\-cycle}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a14525df898cb434fadc39aac203de11e}
+
+
+Delays for a fraction of the complete cycle. 
+
+\begin{DoxyNote}{Note}
+This method takes in a float representing the fraction of time that the L\-E\-D should be on. This is used in P\-W\-M to delay throughout the duty cycle.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em duty\-\_\-cycle} & Fraction of the cycle that the L\-E\-Ds should be on \\
+\hline
+\end{DoxyParams}
+\hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{main.\-c@{main.\-c}!main@{main}}
+\index{main@{main}!main.c@{main.\-c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+Initializes all necessary structures and loops forever. 
+
+\begin{DoxyNote}{Note}
+This method calls the appropriate methods to initialize the necessary structures, initializes and sets any variables, and then runs an infinite loop based off of the Sys\-Tick timer. Inside this loop, appropriate behavior is taken based off of the mode of the system. 
+\end{DoxyNote}
+\hypertarget{main_8c_ab5e09814056d617c521549e542639b7e}{\index{main.\-c@{main.\-c}!Sys\-Tick\-\_\-\-Handler@{Sys\-Tick\-\_\-\-Handler}}
+\index{Sys\-Tick\-\_\-\-Handler@{Sys\-Tick\-\_\-\-Handler}!main.c@{main.\-c}}
+\subsubsection[{Sys\-Tick\-\_\-\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Sys\-Tick\-\_\-\-Handler (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{main_8c_ab5e09814056d617c521549e542639b7e}
+
+
+Handles the Sys\-Tick interupt. 
+
+\begin{DoxyNote}{Note}
+On interupt, this method sets the 'ticks' flag to 1, indicating that an interupt has occured. 
+\end{DoxyNote}

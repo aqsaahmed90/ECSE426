@@ -1,0 +1,68 @@
+\hypertarget{adc__config_8h}{\section{adc\-\_\-config.\-h File Reference}
+\label{adc__config_8h}\index{adc\-\_\-config.\-h@{adc\-\_\-config.\-h}}
+}
+
+
+Implementation of the functionality required for Lab 2.  
+
+
+{\ttfamily \#include \char`\"{}stm32f4xx.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stm32f4xx\-\_\-conf.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{adc__config_8h_af6b067c050c1c1c62ab1db69015c5f93}{A\-D\-C\-\_\-\-Configuration} (A\-D\-C\-\_\-\-Common\-Init\-Type\-Def $\ast$A\-D\-C\-\_\-\-Common\-\_\-\-Init\-Structure, A\-D\-C\-\_\-\-Init\-Type\-Def $\ast$A\-D\-C\-\_\-\-Init\-Structure)
+\begin{DoxyCompactList}\small\item\em Configures and initializes A\-D\-C1. \end{DoxyCompactList}\item 
+float \hyperlink{adc__config_8h_ade14a92b15c58e63b0ef1475c3b99e24}{read\-\_\-\-Temp} (void)
+\begin{DoxyCompactList}\small\item\em Reads the conversion from A\-D\-C1 and converts to a temperature in degrees C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the functionality required for Lab 2. \begin{DoxyAuthor}{Author}
+Ben Swearingen \href{mailto:benjamin.swearingen@mail.mcgill.ca}{\tt benjamin.\-swearingen@mail.\-mcgill.\-ca}
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+This project reads in values from the temperature sensor, converts them with an A\-D\-C, and rotates an L\-E\-D accordingly. It also has the ability to pulse the L\-E\-D's using a software implementation of pulse width modulation. 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\hypertarget{adc__config_8h_af6b067c050c1c1c62ab1db69015c5f93}{\index{adc\-\_\-config.\-h@{adc\-\_\-config.\-h}!A\-D\-C\-\_\-\-Configuration@{A\-D\-C\-\_\-\-Configuration}}
+\index{A\-D\-C\-\_\-\-Configuration@{A\-D\-C\-\_\-\-Configuration}!adc_config.h@{adc\-\_\-config.\-h}}
+\subsubsection[{A\-D\-C\-\_\-\-Configuration}]{\setlength{\rightskip}{0pt plus 5cm}void A\-D\-C\-\_\-\-Configuration (
+\begin{DoxyParamCaption}
+\item[{A\-D\-C\-\_\-\-Common\-Init\-Type\-Def $\ast$}]{A\-D\-C\-\_\-\-Common\-\_\-\-Init\-Structure, }
+\item[{A\-D\-C\-\_\-\-Init\-Type\-Def $\ast$}]{A\-D\-C\-\_\-\-Init\-Structure}
+\end{DoxyParamCaption}
+)}}\label{adc__config_8h_af6b067c050c1c1c62ab1db69015c5f93}
+
+
+Configures and initializes A\-D\-C1. 
+
+\begin{DoxyNote}{Note}
+First initializes the clock to A\-D\-C1. Then resets all A\-D\-C's to ensure that they're in a known state. Then sets A\-D\-C1 to be independent, sets the frequency of the clock to 131,027, disables D\-M\-A, sets the sampling delay to 5 cycles, and then initializes the structure. A\-D\-C\-\_\-\-Init\-Structure is then configured. The resolution is set to 12 bits, Scan\-Conv\-Mode and Continuous\-Conv\-Mode are disabled, the external trigger is disabled, data is aligned right, and the number of conversions is set to 1. The A\-D\-C is then initialized, the temperature sensor is enabled, and A\-D\-C1 is enabled.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$\-A\-D\-C\-\_\-\-Common\-\_\-\-Init\-Structure} & An A\-D\-C\-\_\-\-Common\-Init\-Type\-Def structure to be configured for A\-D\-C1. \\
+\hline
+{\em $\ast$\-A\-D\-C\-\_\-\-Init\-Structure} & An A\-D\-C\-\_\-\-Init\-Type\-Def structure to be configured for A\-D\-C1. \\
+\hline
+\end{DoxyParams}
+\hypertarget{adc__config_8h_ade14a92b15c58e63b0ef1475c3b99e24}{\index{adc\-\_\-config.\-h@{adc\-\_\-config.\-h}!read\-\_\-\-Temp@{read\-\_\-\-Temp}}
+\index{read\-\_\-\-Temp@{read\-\_\-\-Temp}!adc_config.h@{adc\-\_\-config.\-h}}
+\subsubsection[{read\-\_\-\-Temp}]{\setlength{\rightskip}{0pt plus 5cm}float read\-\_\-\-Temp (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{adc__config_8h_ade14a92b15c58e63b0ef1475c3b99e24}
+
+
+Reads the conversion from A\-D\-C1 and converts to a temperature in degrees C. 
+
+\begin{DoxyNote}{Note}
+Sets up the channel that the conversion is going to occur on. It is going to occure on A\-D\-C1, on the channel that contains the Temp\-Sensor, for 480 cycles. As there are no other A\-D\-Cs active, it has rank 1 in the sequencer. The conversion is then started, and runs until the End Of Conversation(\-E\-O\-C) flag is set to something other than R\-E\-S\-E\-T. After the conversion is done, the flags are reset and the value is read from the A\-D\-C. It is then divided by 2$^\wedge$12-\/1 and multiplied by 3\-V so that it is a voltage that represents the temperature. It is then run through the formula from the data sheets that converts it into the correct(ish) temperature.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+The current temperature value. 
+\end{DoxyReturn}

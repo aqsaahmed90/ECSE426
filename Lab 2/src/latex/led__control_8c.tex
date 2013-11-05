@@ -1,0 +1,58 @@
+\hypertarget{led__control_8c}{\section{led\-\_\-control.\-c File Reference}
+\label{led__control_8c}\index{led\-\_\-control.\-c@{led\-\_\-control.\-c}}
+}
+
+
+Implementation of the L\-E\-D functionality.  
+
+
+{\ttfamily \#include \char`\"{}stm32f4xx.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stm32f4xx\-\_\-conf.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}led\-\_\-control.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{led__control_8h_aadcb6002d2b42fdfe01490f730ab00a6}{L\-E\-D} \hyperlink{led__control_8c_a605b48bbb203b596b594dcc9a38fec80}{rotate\-\_\-\-Clockwise} (\hyperlink{led__control_8h_aadcb6002d2b42fdfe01490f730ab00a6}{L\-E\-D} current\-State)
+\begin{DoxyCompactList}\small\item\em Rotates the L\-E\-Ds clockwise. \end{DoxyCompactList}\item 
+\hyperlink{led__control_8h_aadcb6002d2b42fdfe01490f730ab00a6}{L\-E\-D} \hyperlink{led__control_8c_aa1662a5c658beca463ddb99fa909c1db}{rotate\-\_\-\-C\-Clockwise} (\hyperlink{led__control_8h_aadcb6002d2b42fdfe01490f730ab00a6}{L\-E\-D} current\-State)
+\begin{DoxyCompactList}\small\item\em See rotate\-\_\-\-Clockwise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the L\-E\-D functionality. \begin{DoxyAuthor}{Author}
+Ben Swearingen \href{mailto:benjamin.swearingen@mail.mcgill.ca}{\tt benjamin.\-swearingen@mail.\-mcgill.\-ca} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{led__control_8c_aa1662a5c658beca463ddb99fa909c1db}{\index{led\-\_\-control.\-c@{led\-\_\-control.\-c}!rotate\-\_\-\-C\-Clockwise@{rotate\-\_\-\-C\-Clockwise}}
+\index{rotate\-\_\-\-C\-Clockwise@{rotate\-\_\-\-C\-Clockwise}!led_control.c@{led\-\_\-control.\-c}}
+\subsubsection[{rotate\-\_\-\-C\-Clockwise}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\-E\-D} rotate\-\_\-\-C\-Clockwise (
+\begin{DoxyParamCaption}
+\item[{{\bf L\-E\-D}}]{current\-State}
+\end{DoxyParamCaption}
+)}}\label{led__control_8c_aa1662a5c658beca463ddb99fa909c1db}
+
+
+See rotate\-\_\-\-Clockwise. 
+
+\begin{DoxyReturn}{Returns}
+The new state of the L\-E\-Ds. 
+\end{DoxyReturn}
+\hypertarget{led__control_8c_a605b48bbb203b596b594dcc9a38fec80}{\index{led\-\_\-control.\-c@{led\-\_\-control.\-c}!rotate\-\_\-\-Clockwise@{rotate\-\_\-\-Clockwise}}
+\index{rotate\-\_\-\-Clockwise@{rotate\-\_\-\-Clockwise}!led_control.c@{led\-\_\-control.\-c}}
+\subsubsection[{rotate\-\_\-\-Clockwise}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\-E\-D} rotate\-\_\-\-Clockwise (
+\begin{DoxyParamCaption}
+\item[{{\bf L\-E\-D}}]{current\-State}
+\end{DoxyParamCaption}
+)}}\label{led__control_8c_a605b48bbb203b596b594dcc9a38fec80}
+
+
+Rotates the L\-E\-Ds clockwise. 
+
+\begin{DoxyNote}{Note}
+Rotates the L\-E\-Ds clockwise according to state. Having the state represented by cardinal directions seemed to make more sense than by clock notations.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+The new state of the L\-E\-D. 
+\end{DoxyReturn}
