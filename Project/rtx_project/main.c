@@ -10,6 +10,7 @@
  */
 int main (void) {
 	CC2500_Init();
+	GPIO_WriteBit(GPIOA, GPIO_Pin_15, 1);
 	while(1){
 		osDelay(osWaitForever);
 	}

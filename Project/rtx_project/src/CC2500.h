@@ -1,5 +1,4 @@
 #include "stm32f4xx.h"
-#include "cmsis_os.h"
 #include "stm32f4xx_spi.h"
 
 /***************************************************************
@@ -148,6 +147,18 @@
 #define CC2500_CS_LOW()       GPIO_ResetBits(CC2500_SPI_CS_GPIO_PORT, CC2500_SPI_CS_PIN)
 #define CC2500_CS_HIGH()      GPIO_SetBits(CC2500_SPI_CS_GPIO_PORT, CC2500_SPI_CS_PIN)
 
+//STROBE DEFS
+#define SRES 0x30
+#define SFSTXON 0x31
+#define SXOFF 0x32
+#define SCAL 0x33
+#define SRX 0x34
+#define STX 0x35
+#define SIDLE 0x36
+#define SWOR 0x38
+#define SPWD 0x39
+#define SFRX 0x3A
+#define SFTX 0x3B
 #endif
 
 /* CC2500 struct */

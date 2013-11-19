@@ -1,4 +1,5 @@
 #include "CC2500.h"
+#include "cmsis_os.h"
 
 
 
@@ -12,15 +13,73 @@ __IO uint32_t  CC2500Timeout = CC2500_FLAG_TIMEOUT;
 
 static uint8_t CC2500_SendByte(uint8_t byte);
 static void CC2500_LowLevel_Init(void);
+void CC2500_Strobe(uint8_t Strobe);
 
 void CC2500_Init(void){
-	uint8_t ctrl = 0x0;
+	uint8_t ctrl[16];
 	//Configure the low level interface ----------------------------
 	CC2500_LowLevel_Init();
 	
+// 	//Do SRES Strobe to reset chip
+// 	
+// 	GPIO_WriteBit(CC2500_SPI_SCK_GPIO_PORT, CC2500_SPI_SCK_PIN, 1);
+// 	GPIO_WriteBit(CC2500_SPI_MOSI_GPIO_PORT, CC2500_SPI_MOSI_PIN, 0);
+// 	
+// 	CC2500_CS_LOW();
+// 	CC2500_CS_HIGH();
+// 	osDelay(1);
+// 	CC2500_CS_LOW();
+// 	//Wait until SO goes low
+// 	
+// 	CC2500_Strobe(SRES);
+	
 	//TUESDAY
-	ctrl = SMARTRF_SETTING_FSCTRL1;
-	CC2500_Write(&ctrl, FSCTRL1, 1);
+	ctrl[0] = SMARTRF_SETTING_IOCFG2;
+	CC2500_Write(ctrl, IOCFG2, 1);
+	
+	ctrl[0] = SMARTRF_SETTING_IOCFG0D;
+	ctrl[1] = SMARTRF_SETTING_FIFOTHR;
+	CC2500_Write(ctrl, IOCFG0, 2);
+	
+	ctrl[0]  = SMARTRF_SETTING_PKTLEN;
+	ctrl[1]  = SMARTRF_SETTING_PKTCTRL1;
+	ctrl[2]  = SMARTRF_SETTING_PKTCTRL0;
+	ctrl[3]  = SMARTRF_SETTING_ADDR;
+	ctrl[4]  = SMARTRF_SETTING_CHANNR;
+	ctrl[5]  = SMARTRF_SETTING_FSCTRL1;
+	ctrl[6]  = SMARTRF_SETTING_FSCTRL0;
+	ctrl[7]  = SMARTRF_SETTING_FREQ2;
+	ctrl[8]  = SMARTRF_SETTING_FREQ1;
+	ctrl[9]  = SMARTRF_SETTING_FREQ0;
+	ctrl[10] = SMARTRF_SETTING_MDMCFG4;
+	ctrl[11] = SMARTRF_SETTING_MDMCFG3;
+	ctrl[12] = SMARTRF_SETTING_MDMCFG2;
+	ctrl[13] = SMARTRF_SETTING_MDMCFG1;
+	ctrl[14] = SMARTRF_SETTING_MDMCFG0;
+	ctrl[15] = SMARTRF_SETTING_DEVIATN;
+	CC2500_Write(ctrl, PKTLEN, 16);
+	
+	ctrl[0] = SMARTRF_SETTING_MCSM0;
+	ctrl[1] = SMARTRF_SETTING_FOCCFG;
+	ctrl[2] = SMARTRF_SETTING_BSCFG;
+	ctrl[3] = SMARTRF_SETTING_AGCCTRL2;
+	ctrl[4] = SMARTRF_SETTING_AGCCTRL1;
+	ctrl[5] = SMARTRF_SETTING_AGCCTRL0;
+	CC2500_Write(ctrl, MCSM0, 6);
+	
+	ctrl[0] = SMARTRF_SETTING_FREND1;
+	ctrl[1] = SMARTRF_SETTING_FREND0;
+	ctrl[2] = SMARTRF_SETTING_FSCAL3;
+	ctrl[3] = SMARTRF_SETTING_FSCAL2;
+	ctrl[4] = SMARTRF_SETTING_FSCAL1;
+	ctrl[5] = SMARTRF_SETTING_FSCAL0;
+	ctrl[5] = SMARTRF_SETTING_FSTEST;
+	CC2500_Write(ctrl, FREND1, 7);
+	
+	ctrl[0] = SMARTRF_SETTING_TEST2;
+	ctrl[1] = SMARTRF_SETTING_TEST1;
+	ctrl[2] = SMARTRF_SETTING_TEST0;
+	CC2500_Write(ctrl, TEST2, 3);
 }
 
 void CC2500_LowLevel_Init(void){
@@ -116,7 +175,7 @@ static uint8_t CC2500_SendByte(uint8_t byte)
 
 /**
   * @brief  Writes one byte to the CC2500.
-  * @param  pBuffer : pointer to the buffer  containing the data to be written to the LIS302DL.
+  * @param  pBuffer : pointer to the buffer  containing the data to be written to the CC2500.
   * @param  WriteAddr : CC2500's internal address to write to.
   * @param  NumByteToWrite: Number of bytes to write.
   * @retval None
@@ -146,4 +205,49 @@ void CC2500_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite)
   
   /* Set chip select High at the end of the transmission */ 
   CC2500_CS_HIGH();
+}
+
+/**
+  * @brief  Reads a block of data from the CC2500.
+  * @param  pBuffer : pointer to the buffer that receives the data read from the CC2500.
+  * @param  ReadAddr : CC2500's internal address to read from.
+  * @param  NumByteToRead : number of bytes to read from the CC2500.
+  * @retval None
+  */
+void CC2500_Read(uint8_t* pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead)
+{  
+  if(NumByteToRead > 0x01)
+  {
+    ReadAddr |= (uint8_t)(READWRITE_CMD | MULTIPLEBYTE_CMD);
+  }
+  else
+  {
+    ReadAddr |= (uint8_t)READWRITE_CMD;
+  }
+  /* Set chip select Low at the start of the transmission */
+  CC2500_CS_LOW();
+  
+  /* Send the Address of the indexed register */
+  CC2500_SendByte(ReadAddr);
+  
+  /* Receive the data that will be read from the device (MSB First) */
+  while(NumByteToRead > 0x00)
+  {
+    /* Send dummy byte (0x00) to generate the SPI clock to CC2500 (Slave device) */
+    *pBuffer = CC2500_SendByte(DUMMY_BYTE);
+    NumByteToRead--;
+    pBuffer++;
+  }
+  
+  /* Set chip select High at the end of the transmission */ 
+  CC2500_CS_HIGH();
+}
+
+void CC2500_Strobe(uint8_t Strobe){
+	uint8_t *buff;
+	CC2500_CS_LOW();
+	CC2500_SendByte(Strobe);
+	//Wait until SO goes high
+	CC2500_Read(buff, 0xBF, 1);
+	CC2500_CS_HIGH();
 }
