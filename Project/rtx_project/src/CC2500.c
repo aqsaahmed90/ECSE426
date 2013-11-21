@@ -15,6 +15,11 @@ static uint8_t CC2500_SendByte(uint8_t byte);
 static void CC2500_LowLevel_Init(void);
 void CC2500_Strobe(uint8_t Strobe);
 
+void delay(long num_ticks)
+{
+	while(num_ticks-- > 0);
+}
+
 void CC2500_Init(void){
 	uint8_t ctrl[16];
 	//Configure the low level interface ----------------------------
@@ -36,6 +41,7 @@ void CC2500_Init(void){
 	//TUESDAY
 	ctrl[0] = SMARTRF_SETTING_IOCFG2;
 	CC2500_Write(ctrl, IOCFG2, 1);
+	CC2500_Read(ctrl, IOCFG2, 1);
 	
 	ctrl[0] = SMARTRF_SETTING_IOCFG0D;
 	ctrl[1] = SMARTRF_SETTING_FIFOTHR;
@@ -85,6 +91,7 @@ void CC2500_Init(void){
 void CC2500_LowLevel_Init(void){
 	GPIO_InitTypeDef GPIO_InitStructure;
   SPI_InitTypeDef  SPI_InitStructure;
+	uint8_t ctrl;
 
   /* Enable the SPI periph */
   RCC_APB2PeriphClockCmd(CC2500_SPI_CLK, ENABLE);
@@ -94,7 +101,6 @@ void CC2500_LowLevel_Init(void){
 
   /* Enable CS  GPIO clock */
   RCC_AHB1PeriphClockCmd(CC2500_SPI_CS_GPIO_CLK, ENABLE);
-  
 
   GPIO_PinAFConfig(CC2500_SPI_SCK_GPIO_PORT, CC2500_SPI_SCK_SOURCE, CC2500_SPI_SCK_AF);
   GPIO_PinAFConfig(CC2500_SPI_MISO_GPIO_PORT, CC2500_SPI_MISO_SOURCE, CC2500_SPI_MISO_AF);
@@ -124,24 +130,39 @@ void CC2500_LowLevel_Init(void){
   SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
   SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_16;
   SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
   SPI_InitStructure.SPI_CRCPolynomial = 7;
   SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
   SPI_Init(CC2500_SPI, &SPI_InitStructure);
 
-  /* Enable SPI2  */
+  /* Enable SPI1  */
   SPI_Cmd(CC2500_SPI, ENABLE);
 
   /* Configure GPIO PIN for Lis Chip select */
   GPIO_InitStructure.GPIO_Pin = CC2500_SPI_CS_PIN;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
   GPIO_Init(CC2500_SPI_CS_GPIO_PORT, &GPIO_InitStructure);
 
   /* Deselect : Chip Select high */
   GPIO_SetBits(CC2500_SPI_CS_GPIO_PORT, CC2500_SPI_CS_PIN);
+	
+	CC2500_Read(&ctrl, 0x30, 1);
+	CC2500_CS_LOW();
+	delay(100);
+	CC2500_CS_HIGH();
+	delay(100);
+	CC2500_CS_LOW();
+	delay(150);
+	
+	// Send reset command
+	CC2500_Strobe(SRES); 
+	CC2500_CS_HIGH();
+
+	// Set to IDLE state
+	CC2500_Strobe(SIDLE);
 }
 
 /**
@@ -182,29 +203,35 @@ static uint8_t CC2500_SendByte(uint8_t byte)
   */
 void CC2500_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite)
 {
-  /* Configure the MS bit: 
-       - When 0, the address will remain unchanged in multiple read/write commands.
-       - When 1, the address will be auto incremented in multiple read/write commands.
-  */
-  if(NumByteToWrite > 0x01)
-  {
-    WriteAddr |= (uint8_t)MULTIPLEBYTE_CMD;
-  }
-  /* Set chip select Low at the start of the transmission */
-  CC2500_CS_LOW();
-  
-  /* Send the Address of the indexed register */
-  CC2500_SendByte(WriteAddr);
-  /* Send the data that will be written into the device (MSB First) */
-  while(NumByteToWrite >= 0x01)
-  {
-    CC2500_SendByte(*pBuffer);
-    NumByteToWrite--;
-    pBuffer++;
-  }
-  
-  /* Set chip select High at the end of the transmission */ 
-  CC2500_CS_HIGH();
+	uint8_t CC2500_state;
+	/* Configure the Burst mode bit: 
+    - When 0, the address will remain unchanged in multiple read/write commands.
+    - When 1, the address will be auto incremented in multiple read/write commands.
+    */  
+    if(NumByteToWrite > 0x01)
+    {
+        // Set Burst mode bit
+        WriteAddr |= (uint8_t)MULTIPLEBYTE_CMD;
+    }
+    
+    // Set chip select Low at the start of the transmission
+    CC2500_CS_LOW(); 
+
+    
+    // Send the Address of the indexed register
+    // and read the state of the CC2500 peripheral.
+    CC2500_state = CC2500_SendByte(WriteAddr);
+    
+    // Send the data that will be written into the device (MSB First)
+    while(NumByteToWrite >= 0x01)
+    {
+        CC2500_SendByte(*pBuffer);
+        NumByteToWrite--;
+        pBuffer++;
+    }
+
+    // Set chip select High at the end of the transmission
+    CC2500_CS_HIGH();
 }
 
 /**
@@ -244,10 +271,22 @@ void CC2500_Read(uint8_t* pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead)
 }
 
 void CC2500_Strobe(uint8_t Strobe){
-	uint8_t *buff;
+// 	uint8_t *buff;
+// 	CC2500_CS_LOW();
+// 	CC2500_SendByte(Strobe);
+// 	//Wait until SO goes high
+// 	CC2500_Read(buff, 0xBF, 0);
+// 	CC2500_CS_HIGH();
+	uint8_t CC2500_state;
+	
 	CC2500_CS_LOW();
-	CC2500_SendByte(Strobe);
-	//Wait until SO goes high
-	CC2500_Read(buff, 0xBF, 1);
-	CC2500_CS_HIGH();
+
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE)== RESET);	// check flag for transmission to be RESET
+	SPI_I2S_SendData(SPI1, Strobe);												// condition satisfied --> send command strobe
+
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);		// check flag for being busy to be SET
+	CC2500_state = SPI_I2S_ReceiveData(SPI1);											// set status to most recent received data on SPI1
+
+	// Set chip select High at the end of the transmission
+	CC2500_CS_HIGH();   
 }

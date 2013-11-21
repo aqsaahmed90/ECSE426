@@ -47,7 +47,7 @@ C:\Keil\ARM\RV31\LIB\RTX_CM4.LIB --library_type=microlib --strict --scatter ".\o
 ### ADS-LD Output File: '.\obj\output.axf'
 ### ADS-LD Command File: '.\obj\output.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\obj\output.lnp', Handle=0x00000894
+### Creating CmdFile '.\obj\output.lnp', Handle=0x00000860
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\obj\output.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
