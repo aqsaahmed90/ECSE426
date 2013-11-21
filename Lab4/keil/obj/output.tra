@@ -1,0 +1,62 @@
+*** Creating Trace Output File '.\obj\output.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\obj\system_stm32f4xx.o"'
+### List of Objects: adding '".\obj\startup_stm32f4xx.o"'
+### List of Objects: adding '".\obj\rtx_conf_cm.o"'
+### List of Objects: adding '"../rtx_lib/ARM/RTX_CM4.lib"'
+### List of Objects: adding '".\obj\main.o"'
+### List of Objects: adding '".\obj\timers.o"'
+### List of Objects: adding '".\obj\gpio_config.o"'
+### List of Objects: adding '".\obj\adc_config.o"'
+### List of Objects: adding '".\obj\filter.o"'
+### List of Objects: adding '".\obj\accelerometer.o"'
+### List of Objects: adding '".\obj\led_control.o"'
+### List of Objects: adding '".\obj\misc.o"'
+### List of Objects: adding '".\obj\stm32f4xx_adc.o"'
+### List of Objects: adding '".\obj\stm32f4xx_can.o"'
+### List of Objects: adding '".\obj\stm32f4xx_crc.o"'
+### List of Objects: adding '".\obj\stm32f4xx_cryp.o"'
+### List of Objects: adding '".\obj\stm32f4xx_cryp_aes.o"'
+### List of Objects: adding '".\obj\stm32f4xx_cryp_des.o"'
+### List of Objects: adding '".\obj\stm32f4xx_cryp_tdes.o"'
+### List of Objects: adding '".\obj\stm32f4xx_dac.o"'
+### List of Objects: adding '".\obj\stm32f4xx_dbgmcu.o"'
+### List of Objects: adding '".\obj\stm32f4xx_dcmi.o"'
+### List of Objects: adding '".\obj\stm32f4xx_dma.o"'
+### List of Objects: adding '".\obj\stm32f4xx_exti.o"'
+### List of Objects: adding '".\obj\stm32f4xx_flash.o"'
+### List of Objects: adding '".\obj\stm32f4xx_fsmc.o"'
+### List of Objects: adding '".\obj\stm32f4xx_gpio.o"'
+### List of Objects: adding '".\obj\stm32f4xx_hash.o"'
+### List of Objects: adding '".\obj\stm32f4xx_hash_md5.o"'
+### List of Objects: adding '".\obj\stm32f4xx_hash_sha1.o"'
+### List of Objects: adding '".\obj\stm32f4xx_i2c.o"'
+### List of Objects: adding '".\obj\stm32f4xx_iwdg.o"'
+### List of Objects: adding '".\obj\stm32f4xx_pwr.o"'
+### List of Objects: adding '".\obj\stm32f4xx_rcc.o"'
+### List of Objects: adding '".\obj\stm32f4xx_rng.o"'
+### List of Objects: adding '".\obj\stm32f4xx_rtc.o"'
+### List of Objects: adding '".\obj\stm32f4xx_sdio.o"'
+### List of Objects: adding '".\obj\stm32f4xx_spi.o"'
+### List of Objects: adding '".\obj\stm32f4xx_syscfg.o"'
+### List of Objects: adding '".\obj\stm32f4xx_tim.o"'
+### List of Objects: adding '".\obj\stm32f4xx_usart.o"'
+### List of Objects: adding '".\obj\stm32f4xx_wwdg.o"'
+### List of Objects: adding '".\obj\stm32f4_discovery_lis302dl.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M4.fp ".\obj\system_stm32f4xx.o" ".\obj\startup_stm32f4xx.o" ".\obj\rtx_conf_cm.o" "H:\My Documents\MicroP\Lab4\rtx_lib\ARM\RTX_CM4.lib" ".\obj\main.o" ".\obj\timers.o" ".\obj\gpio_config.o" ".\obj\adc_config.o" ".\obj\filter.o" ".\obj\accelerometer.o" ".\obj\led_control.o" ".\obj\misc.o" ".\obj\stm32f4xx_adc.o" ".\obj\stm32f4xx_can.o" ".\obj\stm32f4xx_crc.o" ".\obj\stm32f4xx_cryp.o" ".\obj\stm32f4xx_cryp_aes.o" ".\obj\stm32f4xx_cryp_des.o" ".\obj\stm32f4xx_cryp_tdes.o" ".\obj\stm32f4xx_dac.o" ".\obj\stm32f4xx_dbgmcu.o" ".\obj\stm32f4xx_dcmi.o" ".\obj\stm32f4xx_dma.o" ".\obj\stm32f4xx_exti.o" ".\obj\stm32f4xx_flash.o" ".\obj\stm32f4xx_fsmc.o" ".\obj\stm32f4xx_gpio.o" ".\obj\stm32f4xx_hash.o" ".\obj\stm32f4xx_hash_md5.o" ".\obj\stm32f4xx_hash_sha1.o" ".\obj\stm32f4xx_i2c.o" ".\obj\stm32f4xx_iwdg.o" ".\obj\stm32f4xx_pwr.o" ".\obj\stm32f4xx_rcc.o" ".\obj\stm32f4xx_rng.o" ".\obj\stm32f4xx_rtc.o" ".\obj\stm32f4xx_sdio.o" ".\obj\stm32f4xx_spi.o" ".\obj\stm32f4xx_syscfg.o" ".\obj\stm32f4xx_tim.o" ".\obj\stm32f4xx_usart.o" ".\obj\stm32f4xx_wwdg.o" ".\obj\stm32f4_discovery_lis302dl.o" 
+C:\Keil\ARM\RV31\LIB\RTX_CM4.LIB --library_type=microlib --strict --scatter ".\obj\output.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\output.map" -o .\obj\output.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\obj\output.axf'
+### ADS-LD Command File: '.\obj\output.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\obj\output.lnp', Handle=0x00000434
+### Writing '.lnp' file
+### ADS-LD Command file '.\obj\output.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
