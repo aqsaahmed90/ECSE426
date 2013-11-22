@@ -20,6 +20,19 @@ void delay(long num_ticks)
 	while(num_ticks-- > 0);
 }
 
+uint8_t CC2500_CheckRegisters(uint8_t* pBuffer, uint8_t TestAddr, uint16_t NumByteToTest){
+	uint8_t ctrl[16];
+  int i = 0;
+	CC2500_Read(ctrl, TestAddr, NumByteToTest);
+	
+	while(i < NumByteToTest){
+		if(pBuffer[i] != ctrl[i]) return 0;
+		i++;
+	}
+	return 1;
+	
+}
+
 void CC2500_Init(void){
 	uint8_t ctrl[16];
 	//Configure the low level interface ----------------------------
@@ -41,11 +54,13 @@ void CC2500_Init(void){
 	//TUESDAY
 	ctrl[0] = SMARTRF_SETTING_IOCFG2;
 	CC2500_Write(ctrl, IOCFG2, 1);
-	CC2500_Read(ctrl, IOCFG2, 1);
+	CC2500_Write(ctrl, IOCFG2, 1);
+	while(!CC2500_CheckRegisters(ctrl, IOCFG2, 1));
 	
 	ctrl[0] = SMARTRF_SETTING_IOCFG0D;
 	ctrl[1] = SMARTRF_SETTING_FIFOTHR;
 	CC2500_Write(ctrl, IOCFG0, 2);
+	while(!CC2500_CheckRegisters(ctrl, IOCFG0, 2))CC2500_Write(ctrl, IOCFG0, 2);
 	
 	ctrl[0]  = SMARTRF_SETTING_PKTLEN;
 	ctrl[1]  = SMARTRF_SETTING_PKTCTRL1;
@@ -64,6 +79,7 @@ void CC2500_Init(void){
 	ctrl[14] = SMARTRF_SETTING_MDMCFG0;
 	ctrl[15] = SMARTRF_SETTING_DEVIATN;
 	CC2500_Write(ctrl, PKTLEN, 16);
+	while(!CC2500_CheckRegisters(ctrl, PKTLEN, 16))CC2500_Write(ctrl, PKTLEN, 16);;
 	
 	ctrl[0] = SMARTRF_SETTING_MCSM0;
 	ctrl[1] = SMARTRF_SETTING_FOCCFG;
@@ -72,6 +88,7 @@ void CC2500_Init(void){
 	ctrl[4] = SMARTRF_SETTING_AGCCTRL1;
 	ctrl[5] = SMARTRF_SETTING_AGCCTRL0;
 	CC2500_Write(ctrl, MCSM0, 6);
+	while(!CC2500_CheckRegisters(ctrl, MCSM0, 6))CC2500_Write(ctrl, MCSM0, 6);;
 	
 	ctrl[0] = SMARTRF_SETTING_FREND1;
 	ctrl[1] = SMARTRF_SETTING_FREND0;
@@ -81,11 +98,13 @@ void CC2500_Init(void){
 	ctrl[5] = SMARTRF_SETTING_FSCAL0;
 	ctrl[5] = SMARTRF_SETTING_FSTEST;
 	CC2500_Write(ctrl, FREND1, 7);
+	while(!CC2500_CheckRegisters(ctrl, FREND1, 7))CC2500_Write(ctrl, FREND1, 7);;
 	
 	ctrl[0] = SMARTRF_SETTING_TEST2;
 	ctrl[1] = SMARTRF_SETTING_TEST1;
 	ctrl[2] = SMARTRF_SETTING_TEST0;
 	CC2500_Write(ctrl, TEST2, 3);
+	while(!CC2500_CheckRegisters(ctrl, TEST2, 3))CC2500_Write(ctrl, TEST2, 3);;
 }
 
 void CC2500_LowLevel_Init(void){
@@ -149,7 +168,7 @@ void CC2500_LowLevel_Init(void){
   /* Deselect : Chip Select high */
   GPIO_SetBits(CC2500_SPI_CS_GPIO_PORT, CC2500_SPI_CS_PIN);
 	
-	CC2500_Read(&ctrl, 0x30, 1);
+	//CC2500_Read(&ctrl, 0x30, 1);
 	CC2500_CS_LOW();
 	delay(100);
 	CC2500_CS_HIGH();
@@ -159,6 +178,7 @@ void CC2500_LowLevel_Init(void){
 	
 	// Send reset command
 	CC2500_Strobe(SRES); 
+	while(!GPIO_ReadInputDataBit(CC2500_SPI_MISO_GPIO_PORT, CC2500_SPI_MISO_PIN));
 	CC2500_CS_HIGH();
 
 	// Set to IDLE state
@@ -177,7 +197,7 @@ static uint8_t CC2500_SendByte(uint8_t byte)
   CC2500Timeout = CC2500_FLAG_TIMEOUT;
   while (SPI_I2S_GetFlagStatus(CC2500_SPI, SPI_I2S_FLAG_TXE) == RESET)
   {
-    if((CC2500Timeout--) == 0) return 0;
+//     if((CC2500Timeout--) == 0) return 0;
   }
   
   /* Send a Byte through the SPI peripheral */
@@ -187,7 +207,7 @@ static uint8_t CC2500_SendByte(uint8_t byte)
   CC2500Timeout = CC2500_FLAG_TIMEOUT;
   while (SPI_I2S_GetFlagStatus(CC2500_SPI, SPI_I2S_FLAG_RXNE) == RESET)
   {
-    if((CC2500Timeout--) == 0) return 0;
+//     if((CC2500Timeout--) == 0) return 0;
   }
   
   /* Return the Byte read from the SPI bus */

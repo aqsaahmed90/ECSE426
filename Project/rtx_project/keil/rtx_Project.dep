@@ -41,7 +41,7 @@ I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x516F1C96)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stddef.h)(0x516F1C96)
 I (../inc/RTX_CM_lib.h)(0x528A6D6F)
 F (../rtx_lib/ARM/RTX_CM4.lib)(0x4F47F72A)()
-F (../main.c)(0x528BC5B3)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\main.o" --omf_browse ".\obj\main.crf" --depend ".\obj\main.d")
+F (../main.c)(0x528FA7E6)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\main.o" --omf_browse ".\obj\main.crf" --depend ".\obj\main.d")
 I (C:\Keil\ARM\CMSIS\Include\arm_math.h)(0x515EC364)
 I (C:\Keil\ARM\CMSIS\Include\core_cm4.h)(0x515EC364)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x516F1C96)
@@ -84,7 +84,7 @@ I (../inc/cmsis_os.h)(0x4F47F72E)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stddef.h)(0x516F1C96)
 I (../src/CC2500.h)(0x528E70DD)
 F (..\src\CC2500.h)(0x528E70DD)()
-F (..\src\CC2500.c)(0x528E78D7)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\cc2500.o" --omf_browse ".\obj\cc2500.crf" --depend ".\obj\cc2500.d")
+F (..\src\CC2500.c)(0x528FB170)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\cc2500.o" --omf_browse ".\obj\cc2500.crf" --depend ".\obj\cc2500.d")
 I (..\src\CC2500.h)(0x528E70DD)
 I (../CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x4F55249C)
 I (../inc/core_cm4.h)(0x4F47F72C)
