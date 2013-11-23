@@ -3,6 +3,7 @@
 #include "stm32f4xx.h"
 #include "cmsis_os.h"
 #include "CC2500.h"
+#include "KEYPAD.h"
 
 
 /*!
@@ -10,7 +11,13 @@
  */
 int main (void) {
 	CC2500_Init();
+	GPIO_DeInit(KEYPAD_GPIO);
+	//KEYPAD_Init();
+	uint8_t test;
 	while(1){
-		osDelay(osWaitForever);
+		CC2500_RXData();
+// 		test = KEYPAD_Check();
+// 		test++;
+		osDelay(10);
 	}
 }

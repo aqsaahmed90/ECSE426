@@ -442,6 +442,16 @@
               <FileType>1</FileType>
               <FilePath>..\src\CC2500.c</FilePath>
             </File>
+            <File>
+              <FileName>KEYPAD.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\KEYPAD.c</FilePath>
+            </File>
+            <File>
+              <FileName>KEYPAD.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\KEYPAD.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

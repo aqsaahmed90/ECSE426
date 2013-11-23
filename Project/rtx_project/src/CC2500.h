@@ -16,7 +16,7 @@
 
 #define SMARTRF_SETTING_FSCTRL1    0x0C//0x12 //Frequency offset = 457kHz
 #define SMARTRF_SETTING_FSCTRL0    0x00
-#define SMARTRF_SETTING_FREQ2      0x5D // Carrier Frequency is 2.433GHz
+#define SMARTRF_SETTING_FREQ2      0x5D // Carrier Frequency is 2.433GHz + 8 X 7 = 2.489GHz
 #define SMARTRF_SETTING_FREQ1      0x93
 #define SMARTRF_SETTING_FREQ0      0xB1
 #define SMARTRF_SETTING_MDMCFG4    0x0E //0x2D // BW of channel = 541.666kHz
@@ -100,6 +100,15 @@
 #define TEST1 0x2D
 #define TEST0 0x2E
 
+#define PARTNUM 0x30
+#define VERSION 0x31
+#define FREQEST 0x32
+#define LQI 0x33
+#define RSSI 0x34
+#define MARCSATE 0x35
+#define TXBYTES 0x3A
+#define RXBYTES 0x3B
+
 
 
 /* SPI RELATED DEFINITIONS */
@@ -161,6 +170,8 @@
 #define SPWD 0x39
 #define SFRX 0x3A
 #define SFTX 0x3B
+#define SWORRST 0x3C
+#define SNOP 0x3D        
 #endif
 
 /* CC2500 struct */
@@ -173,5 +184,7 @@ typedef struct{
 void CC2500_Init(void);
 void CC2500_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite);
 void CC2500_Read(uint8_t* pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead);
+uint8_t* CC2500_RXData(void);
+void CC2500_TXData(uint8_t* data);
 //void CC2500_LowpowerCmd(uint8_t LowPowerMode);
 void CC2500_RebootCmd(void);

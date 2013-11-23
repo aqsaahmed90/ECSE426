@@ -11,9 +11,11 @@ __IO uint32_t  CC2500Timeout = CC2500_FLAG_TIMEOUT;
 /* Dummy Byte Send by the SPI Master device in order to generate the Clock to the Slave device */
 #define DUMMY_BYTE                 ((uint8_t)0x00)
 
+uint8_t CC2500_state;
+
 static uint8_t CC2500_SendByte(uint8_t byte);
 static void CC2500_LowLevel_Init(void);
-void CC2500_Strobe(uint8_t Strobe);
+uint8_t CC2500_Strobe(uint8_t Strobe);
 
 void delay(long num_ticks)
 {
@@ -223,7 +225,6 @@ static uint8_t CC2500_SendByte(uint8_t byte)
   */
 void CC2500_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite)
 {
-	uint8_t CC2500_state;
 	/* Configure the Burst mode bit: 
     - When 0, the address will remain unchanged in multiple read/write commands.
     - When 1, the address will be auto incremented in multiple read/write commands.
@@ -290,14 +291,13 @@ void CC2500_Read(uint8_t* pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead)
   CC2500_CS_HIGH();
 }
 
-void CC2500_Strobe(uint8_t Strobe){
+uint8_t CC2500_Strobe(uint8_t Strobe){
 // 	uint8_t *buff;
 // 	CC2500_CS_LOW();
 // 	CC2500_SendByte(Strobe);
 // 	//Wait until SO goes high
 // 	CC2500_Read(buff, 0xBF, 0);
 // 	CC2500_CS_HIGH();
-	uint8_t CC2500_state;
 	
 	CC2500_CS_LOW();
 
@@ -305,8 +305,38 @@ void CC2500_Strobe(uint8_t Strobe){
 	SPI_I2S_SendData(SPI1, Strobe);												// condition satisfied --> send command strobe
 
 	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);		// check flag for being busy to be SET
-	CC2500_state = SPI_I2S_ReceiveData(SPI1);											// set status to most recent received data on SPI1
+	CC2500_state = (SPI_I2S_ReceiveData(SPI1) & 0x70) >> 4;											// set status to most recent received data on SPI1
 
 	// Set chip select High at the end of the transmission
 	CC2500_CS_HIGH();   
+	return CC2500_state;
+}
+
+uint8_t* CC2500_RXData(void){
+	uint8_t bytes_in_rxfifo;
+	uint8_t data[4];
+	CC2500_Strobe(SRX);
+	
+	while(CC2500_Strobe(SNOP) != 1);
+	
+	CC2500_Read(&bytes_in_rxfifo, RXBYTES, 1);
+	bytes_in_rxfifo = bytes_in_rxfifo & 0x7F;
+	if(bytes_in_rxfifo >= 4){
+		CC2500_Read(data, 0xFF, 4);
+	}
+	CC2500_Strobe(SIDLE);
+	
+	while(CC2500_Strobe(SNOP) != 0);
+	
+	CC2500_Strobe(SFRX); 
+		
+		// Return to RX mode
+	CC2500_Strobe(SRX); 
+		
+		// Wait until mode changes
+	while(CC2500_Strobe(SNOP) != 1);
+}
+
+void CC2500_TXData(uint8_t* data){
+	
 }
