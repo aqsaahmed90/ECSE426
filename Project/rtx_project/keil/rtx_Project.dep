@@ -82,11 +82,12 @@ I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_wwdg.h)(0x4F551E30)
 I (../STM32F4xx_StdPeriph_Driver/inc/misc.h)(0x4F551E30)
 I (../inc/cmsis_os.h)(0x4F47F72E)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stddef.h)(0x516F1C96)
-I (../src/CC2500.h)(0x52910F84)
+I (../src/CC2500.h)(0x529240F6)
+I (../src/ACCEL.h)(0x52923EE5)
 I (../src/KEYPAD.h)(0x5290FB81)
-F (..\src\CC2500.h)(0x52910F84)()
-F (..\src\CC2500.c)(0x529111E2)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\cc2500.o" --omf_browse ".\obj\cc2500.crf" --depend ".\obj\cc2500.d")
-I (..\src\CC2500.h)(0x52910F84)
+F (..\src\CC2500.h)(0x529240F6)()
+F (..\src\CC2500.c)(0x529247A1)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\cc2500.o" --omf_browse ".\obj\cc2500.crf" --depend ".\obj\cc2500.d")
+I (..\src\CC2500.h)(0x529240F6)
 I (../CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x4F55249C)
 I (../inc/core_cm4.h)(0x4F47F72C)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x516F1C96)
@@ -121,6 +122,7 @@ I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h)(0x4F551E30)
 I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h)(0x4F551E30)
 I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_wwdg.h)(0x4F551E30)
 I (../STM32F4xx_StdPeriph_Driver/inc/misc.h)(0x4F551E30)
+I (..\src\ACCEL.h)(0x52923EE5)
 I (../inc/cmsis_os.h)(0x4F47F72E)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stddef.h)(0x516F1C96)
 F (..\src\KEYPAD.c)(0x5290FE4F)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\keypad.o" --omf_browse ".\obj\keypad.crf" --depend ".\obj\keypad.d")
@@ -162,6 +164,86 @@ I (../STM32F4xx_StdPeriph_Driver/inc/misc.h)(0x4F551E30)
 I (../inc/cmsis_os.h)(0x4F47F72E)
 I (C:\Keil\ARM\ARMCC\bin\..\include\stddef.h)(0x516F1C96)
 F (..\src\KEYPAD.h)(0x5290FB81)()
+F (..\src\ACCEL.c)(0x52923FE0)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\accel.o" --omf_browse ".\obj\accel.crf" --depend ".\obj\accel.d")
+I (..\src\ACCEL.h)(0x52923EE5)
+I (../CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x4F55249C)
+I (../inc/core_cm4.h)(0x4F47F72C)
+I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x516F1C96)
+I (../inc/core_cmInstr.h)(0x4F47F72E)
+I (../inc/core_cmFunc.h)(0x4F47F72E)
+I (../inc/core_cm4_simd.h)(0x4F47F72E)
+I (../CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x4F551E2C)
+I (../stm32f4xx_conf.h)(0x50217CC6)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_adc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_crc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_cryp.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dac.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dbgmcu.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dcmi.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_flash.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_hash.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_i2c.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_iwdg.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_pwr.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rng.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rtc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_sdio.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_spi.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_wwdg.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/misc.h)(0x4F551E30)
+I (..\src\stm32f4_discovery_lis302dl.h)(0x528A884D)
+I (..\src\filter.h)(0x528A8859)
+I (C:\Keil\ARM\ARMCC\bin\..\include\math.h)(0x516F1C96)
+F (..\src\ACCEL.h)(0x52923EE5)()
+F (..\src\stm32f4_discovery_lis302dl.c)(0x528A884D)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\stm32f4_discovery_lis302dl.o" --omf_browse ".\obj\stm32f4_discovery_lis302dl.crf" --depend ".\obj\stm32f4_discovery_lis302dl.d")
+I (..\src\stm32f4_discovery_lis302dl.h)(0x528A884D)
+I (../CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x4F55249C)
+I (../inc/core_cm4.h)(0x4F47F72C)
+I (C:\Keil\ARM\ARMCC\bin\..\include\stdint.h)(0x516F1C96)
+I (../inc/core_cmInstr.h)(0x4F47F72E)
+I (../inc/core_cmFunc.h)(0x4F47F72E)
+I (../inc/core_cm4_simd.h)(0x4F47F72E)
+I (../CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x4F551E2C)
+I (../stm32f4xx_conf.h)(0x50217CC6)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_adc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_can.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_crc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_cryp.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dac.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dbgmcu.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dcmi.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dma.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_exti.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_flash.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_fsmc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_hash.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_gpio.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_i2c.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_iwdg.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_pwr.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rng.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rtc.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_sdio.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_spi.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_syscfg.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_tim.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_wwdg.h)(0x4F551E30)
+I (../STM32F4xx_StdPeriph_Driver/inc/misc.h)(0x4F551E30)
+F (..\src\stm32f4_discovery_lis302dl.h)(0x528A884D)()
+F (..\src\filter.c)(0x528A8859)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\filter.o" --omf_browse ".\obj\filter.crf" --depend ".\obj\filter.d")
+I (..\src\filter.h)(0x528A8859)
+F (..\src\filter.h)(0x528A8859)()
 F (..\STM32F4xx_StdPeriph_Driver\src\misc.c)(0x4F551E30)(-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\misc.o" --omf_browse ".\obj\misc.crf" --depend ".\obj\misc.d")
 I (../STM32F4xx_StdPeriph_Driver/inc/misc.h)(0x4F551E30)
 I (../CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x4F55249C)

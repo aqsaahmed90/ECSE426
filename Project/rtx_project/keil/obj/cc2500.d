@@ -35,5 +35,6 @@
 .\obj\cc2500.o: ../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_usart.h
 .\obj\cc2500.o: ../STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_wwdg.h
 .\obj\cc2500.o: ../STM32F4xx_StdPeriph_Driver/inc/misc.h
+.\obj\cc2500.o: ..\src\ACCEL.h
 .\obj\cc2500.o: ../inc/cmsis_os.h
 .\obj\cc2500.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h

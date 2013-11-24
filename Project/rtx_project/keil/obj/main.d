@@ -41,4 +41,5 @@
 .\obj\main.o: ../inc/cmsis_os.h
 .\obj\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
 .\obj\main.o: ../src/CC2500.h
+.\obj\main.o: ../src/ACCEL.h
 .\obj\main.o: ../src/KEYPAD.h

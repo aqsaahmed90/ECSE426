@@ -1,5 +1,6 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_spi.h"
+#include "ACCEL.h"
 
 /***************************************************************
  *  SmartRF Studio(tm) Export
@@ -172,6 +173,9 @@
 #define SFTX 0x3B
 #define SWORRST 0x3C
 #define SNOP 0x3D        
+
+#define PITCH_DATA 0
+#define ROLL_DATA 1
 #endif
 
 /* CC2500 struct */
@@ -181,10 +185,11 @@ typedef struct{
 	uint8_t VCC;
 	uint8_t UCB0CLK;
 }CC2500_InitTypeDef;
+
 void CC2500_Init(void);
 void CC2500_Write(uint8_t* pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite);
 void CC2500_Read(uint8_t* pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead);
-uint8_t* CC2500_RXData(void);
-void CC2500_TXData(uint8_t* data);
+angle_data CC2500_RXData(void);
+void CC2500_TXData(angle_data data);
 //void CC2500_LowpowerCmd(uint8_t LowPowerMode);
 void CC2500_RebootCmd(void);

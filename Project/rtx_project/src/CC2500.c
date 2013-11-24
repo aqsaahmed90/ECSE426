@@ -312,9 +312,10 @@ uint8_t CC2500_Strobe(uint8_t Strobe){
 	return CC2500_state;
 }
 
-uint8_t* CC2500_RXData(void){
+angle_data CC2500_RXData(void){
 	uint8_t bytes_in_rxfifo;
 	uint8_t data[4];
+	angle_data processed_data;
 	CC2500_Strobe(SRX);
 	
 	while(CC2500_Strobe(SNOP) != 1);
@@ -335,8 +336,22 @@ uint8_t* CC2500_RXData(void){
 		
 		// Wait until mode changes
 	while(CC2500_Strobe(SNOP) != 1);
+	
+	processed_data.pitch = data[PITCH_DATA];
+	processed_data.roll = data[ROLL_DATA];
+	return processed_data;
 }
 
-void CC2500_TXData(uint8_t* data){
+void CC2500_TXData(angle_data data){
+	uint8_t* transmitted_data;
+	transmitted_data[PITCH_DATA] = data.pitch;
+	transmitted_data[ROLL_DATA] = data.roll;
+	CC2500_Strobe(SIDLE);
+	while(CC2500_Strobe(SNOP) != 0);
+	CC2500_Strobe(SFTX);
+	CC2500_Write(transmitted_data, 0x7F, 2); 
+	CC2500_Strobe(STX);
+	while(CC2500_Strobe(SNOP) != 2);
+	while(CC2500_Strobe(SNOP) != 0);
 	
 }
