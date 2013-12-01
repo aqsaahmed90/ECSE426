@@ -1,0 +1,4 @@
+-c --cpu Cortex-M4.fp -D__RTX -D__MICROLIB --li -g -O0 --apcs=interwork -I../ -I../rtx_cmsis -I../inc -I../src -I../CMSIS/Device/ST/STM32F4xx/Include -I../STM32F4xx_StdPeriph_Driver/inc --c99 
+-I C:\Keil\ARM\RV31\INC 
+-I C:\Keil\ARM\CMSIS\Include 
+-D__FPU_PRESENT="1" -DSTM32F4XX -DUSE_STDPERIPH_DRIVER="1" -DHSE_VALUE="8000000" -DARM_MATH_CM4="1" -o ".\obj\stm32f4xx_pwr.o" --omf_browse ".\obj\stm32f4xx_pwr.crf" --depend ".\obj\stm32f4xx_pwr.d" "..\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_pwr.c"
