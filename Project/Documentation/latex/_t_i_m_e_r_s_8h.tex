@@ -1,0 +1,31 @@
+\hypertarget{_t_i_m_e_r_s_8h}{\section{src/\-T\-I\-M\-E\-R\-S.h File Reference}
+\label{_t_i_m_e_r_s_8h}\index{src/\-T\-I\-M\-E\-R\-S.\-h@{src/\-T\-I\-M\-E\-R\-S.\-h}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_t_i_m_e_r_s_8h_a73384c1ad9d64579b42accb338f571c5}{I\-N\-T\-T\-I\-M\-\_\-\-Config} (void)
+\begin{DoxyCompactList}\small\item\em Configures and initializes T\-I\-M2 and the T\-I\-M2 interrupt in the N\-V\-I\-C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ben Swearingen \href{mailto:benjamin.swearingen@mail.mcgill.ca}{\tt benjamin.\-swearingen@mail.\-mcgill.\-ca} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{_t_i_m_e_r_s_8h_a73384c1ad9d64579b42accb338f571c5}{\index{T\-I\-M\-E\-R\-S.\-h@{T\-I\-M\-E\-R\-S.\-h}!I\-N\-T\-T\-I\-M\-\_\-\-Config@{I\-N\-T\-T\-I\-M\-\_\-\-Config}}
+\index{I\-N\-T\-T\-I\-M\-\_\-\-Config@{I\-N\-T\-T\-I\-M\-\_\-\-Config}!TIMERS.h@{T\-I\-M\-E\-R\-S.\-h}}
+\subsubsection[{I\-N\-T\-T\-I\-M\-\_\-\-Config}]{\setlength{\rightskip}{0pt plus 5cm}void I\-N\-T\-T\-I\-M\-\_\-\-Config (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_t_i_m_e_r_s_8h_a73384c1ad9d64579b42accb338f571c5}
+
+
+Configures and initializes T\-I\-M2 and the T\-I\-M2 interrupt in the N\-V\-I\-C. 
+
+\begin{DoxyNote}{Note}
+Configures the N\-V\-I\-C T\-I\-M2 entry to have priority (0,1). Then enables T\-I\-M2 at 25\-Hz. T\-I\-M4 is then enabled at 1.\-5\-K\-Hz for P\-W\-M. No interrupt is set for T\-I\-M4. 
+\end{DoxyNote}

@@ -1,0 +1,61 @@
+\hypertarget{filter_8c}{\section{src/filter.c File Reference}
+\label{filter_8c}\index{src/filter.\-c@{src/filter.\-c}}
+}
+
+
+Implementation of the filter.  
+
+
+{\ttfamily \#include \char`\"{}filter.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{filter_8c_a5e6ecc2f397502e8b971fd17ef018e4a}{Filter\-\_\-\-Configuration} (\hyperlink{struct_lowpass___filter}{Lowpass\-\_\-\-Filter} $\ast$Filter\-\_\-\-Structure)
+\begin{DoxyCompactList}\small\item\em Initializes the filter. \end{DoxyCompactList}\item 
+float \hyperlink{filter_8c_ad6cfd573df7e1c58b9b97fede2257fb0}{filter\-\_\-\-Value} (\hyperlink{struct_lowpass___filter}{Lowpass\-\_\-\-Filter} $\ast$Filter\-\_\-\-Structure, float new\-\_\-\-Value)
+\begin{DoxyCompactList}\small\item\em Reads in a value and returns the filtered value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the filter. \begin{DoxyAuthor}{Author}
+Ben Swearingen \href{mailto:benjamin.swearingen@mail.mcgill.ca}{\tt benjamin.\-swearingen@mail.\-mcgill.\-ca} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{filter_8c_a5e6ecc2f397502e8b971fd17ef018e4a}{\index{filter.\-c@{filter.\-c}!Filter\-\_\-\-Configuration@{Filter\-\_\-\-Configuration}}
+\index{Filter\-\_\-\-Configuration@{Filter\-\_\-\-Configuration}!filter.c@{filter.\-c}}
+\subsubsection[{Filter\-\_\-\-Configuration}]{\setlength{\rightskip}{0pt plus 5cm}float Filter\-\_\-\-Configuration (
+\begin{DoxyParamCaption}
+\item[{{\bf Lowpass\-\_\-\-Filter} $\ast$}]{Filter\-\_\-\-Structure}
+\end{DoxyParamCaption}
+)}}\label{filter_8c_a5e6ecc2f397502e8b971fd17ef018e4a}
+
+
+Initializes the filter. 
+
+Initializes the filter by setting all values to 0. \hypertarget{filter_8c_ad6cfd573df7e1c58b9b97fede2257fb0}{\index{filter.\-c@{filter.\-c}!filter\-\_\-\-Value@{filter\-\_\-\-Value}}
+\index{filter\-\_\-\-Value@{filter\-\_\-\-Value}!filter.c@{filter.\-c}}
+\subsubsection[{filter\-\_\-\-Value}]{\setlength{\rightskip}{0pt plus 5cm}float filter\-\_\-\-Value (
+\begin{DoxyParamCaption}
+\item[{{\bf Lowpass\-\_\-\-Filter} $\ast$}]{Filter\-\_\-\-Structure, }
+\item[{float}]{new\-\_\-\-Value}
+\end{DoxyParamCaption}
+)}}\label{filter_8c_ad6cfd573df7e1c58b9b97fede2257fb0}
+
+
+Reads in a value and returns the filtered value. 
+
+\begin{DoxyNote}{Note}
+Takes in a value, inserts it into the correct place into the array, computes the average of the group, and returns the filtered value. It also updates the filter structure so that the next value is places in the next buffer slot.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$\-Filter\-\_\-\-Structure} & The filter structure that contains the buffer and all other elements. \\
+\hline
+{\em new\-\_\-\-Value} & The unfiltered value to be inserted into the filter and processed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The filtered value. 
+\end{DoxyReturn}

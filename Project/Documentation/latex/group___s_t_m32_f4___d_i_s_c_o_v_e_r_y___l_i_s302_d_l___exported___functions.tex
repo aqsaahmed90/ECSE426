@@ -1,0 +1,283 @@
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions}{\section{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}
+\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions}\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga0ceeaa64f528427ffca42afd45051df6}{L\-I\-S302\-D\-L\-\_\-\-Init} (\hyperlink{struct_l_i_s302_d_l___init_type_def}{L\-I\-S302\-D\-L\-\_\-\-Init\-Type\-Def} $\ast$L\-I\-S302\-D\-L\-\_\-\-Init\-Struct)
+\begin{DoxyCompactList}\small\item\em Set L\-I\-S302\-D\-L Initialization. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga8b1f05ec087784131846221e7992e1b4}{L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config} (\hyperlink{struct_l_i_s302_d_l___interrupt_config_type_def}{L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config\-Type\-Def} $\ast$L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config\-Struct)
+\begin{DoxyCompactList}\small\item\em Set L\-I\-S302\-D\-L Interrupt configuration. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga0c2ce8efd66b092a82e64f88ed5b9e9a}{L\-I\-S302\-D\-L\-\_\-\-Filter\-Config} (\hyperlink{struct_l_i_s302_d_l___filter_config_type_def}{L\-I\-S302\-D\-L\-\_\-\-Filter\-Config\-Type\-Def} $\ast$L\-I\-S302\-D\-L\-\_\-\-Filter\-Config\-Struct)
+\begin{DoxyCompactList}\small\item\em Set L\-I\-S302\-D\-L Internal High Pass Filter configuration. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga445e78cca4cd65f59e0ffaa3575db8ae}{L\-I\-S302\-D\-L\-\_\-\-Lowpower\-Cmd} (uint8\-\_\-t Low\-Power\-Mode)
+\begin{DoxyCompactList}\small\item\em Change the lowpower mode for L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_gadb44926aefe4fc8e6cdff256077c0bf4}{L\-I\-S302\-D\-L\-\_\-\-Full\-Scale\-Cmd} (uint8\-\_\-t F\-S\-\_\-value)
+\begin{DoxyCompactList}\small\item\em Change the Full Scale of L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga8542910cb1e71d7031fab7a462c768bd}{L\-I\-S302\-D\-L\-\_\-\-Data\-Rate\-Cmd} (uint8\-\_\-t Data\-Rate\-Value)
+\begin{DoxyCompactList}\small\item\em Data Rate command. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga34234db89f7d653fea3085007d3d9e0e}{L\-I\-S302\-D\-L\-\_\-\-Reboot\-Cmd} (void)
+\begin{DoxyCompactList}\small\item\em Reboot memory content of L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_gaf31f5b65ff8d208eeabae1a8f294fcc2}{L\-I\-S302\-D\-L\-\_\-\-Read\-A\-C\-C} (int32\-\_\-t $\ast$out)
+\begin{DoxyCompactList}\small\item\em Read L\-I\-S302\-D\-L output register, and calculate the acceleration A\-C\-C\mbox{[}mg\mbox{]}=S\-E\-N\-S\-I\-T\-I\-V\-I\-T\-Y$\ast$ (out\-\_\-h$\ast$256+out\-\_\-l)/16 (12 bit rappresentation) \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga43f400565c47cdcf5fd19b8b601e7c41}{L\-I\-S302\-D\-L\-\_\-\-Write} (uint8\-\_\-t $\ast$p\-Buffer, uint8\-\_\-t Write\-Addr, uint16\-\_\-t Num\-Byte\-To\-Write)
+\begin{DoxyCompactList}\small\item\em Writes one byte to the L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_gae578a971afc1699d6056937ad7604d0a}{L\-I\-S302\-D\-L\-\_\-\-Read} (uint8\-\_\-t $\ast$p\-Buffer, uint8\-\_\-t Read\-Addr, uint16\-\_\-t Num\-Byte\-To\-Read)
+\begin{DoxyCompactList}\small\item\em Reads a block of data from the L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+uint32\-\_\-t \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga6ebadd4ac5226151b229303db49d2c0a}{L\-I\-S302\-D\-L\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-User\-Callback} (void)
+\begin{DoxyCompactList}\small\item\em Basic management of the timeout situation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga8542910cb1e71d7031fab7a462c768bd}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Data\-Rate\-Cmd@{L\-I\-S302\-D\-L\-\_\-\-Data\-Rate\-Cmd}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Data\-Rate\-Cmd@{L\-I\-S302\-D\-L\-\_\-\-Data\-Rate\-Cmd}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Data\-Rate\-Cmd}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Data\-Rate\-Cmd (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{Data\-Rate\-Value}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga8542910cb1e71d7031fab7a462c768bd}
+
+
+Data Rate command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Data\-Rate\-Value,\-:} & Data rate value This parameter can be one of the following values\-: \begin{DoxyItemize}
+\item L\-I\-S302\-D\-L\-\_\-\-D\-A\-T\-A\-R\-A\-T\-E\-\_\-100\-: 100 Hz output data rate \item L\-I\-S302\-D\-L\-\_\-\-D\-A\-T\-A\-R\-A\-T\-E\-\_\-400\-: 400 Hz output data rate \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga0c2ce8efd66b092a82e64f88ed5b9e9a}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Filter\-Config@{L\-I\-S302\-D\-L\-\_\-\-Filter\-Config}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Filter\-Config@{L\-I\-S302\-D\-L\-\_\-\-Filter\-Config}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Filter\-Config}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Filter\-Config (
+\begin{DoxyParamCaption}
+\item[{{\bf L\-I\-S302\-D\-L\-\_\-\-Filter\-Config\-Type\-Def} $\ast$}]{L\-I\-S302\-D\-L\-\_\-\-Filter\-Config\-Struct}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga0c2ce8efd66b092a82e64f88ed5b9e9a}
+
+
+Set L\-I\-S302\-D\-L Internal High Pass Filter configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L\-I\-S302\-D\-L\-\_\-\-Filter\-\_\-\-Config\-Type\-Def,\-:} & pointer to a L\-I\-S302\-D\-L\-\_\-\-Filter\-Config\-\_\-\-Type\-Def structure that contains the configuration setting for the L\-I\-S302\-D\-L Filter. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_gadb44926aefe4fc8e6cdff256077c0bf4}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Full\-Scale\-Cmd@{L\-I\-S302\-D\-L\-\_\-\-Full\-Scale\-Cmd}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Full\-Scale\-Cmd@{L\-I\-S302\-D\-L\-\_\-\-Full\-Scale\-Cmd}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Full\-Scale\-Cmd}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Full\-Scale\-Cmd (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{F\-S\-\_\-value}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_gadb44926aefe4fc8e6cdff256077c0bf4}
+
+
+Change the Full Scale of L\-I\-S302\-D\-L. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\-S\-\_\-value,\-:} & new full scale value. This parameter can be one of the following values\-: \begin{DoxyItemize}
+\item L\-I\-S302\-D\-L\-\_\-\-F\-U\-L\-L\-S\-C\-A\-L\-E\-\_\-2\-\_\-3\-: +-\/2.3g \item L\-I\-S302\-D\-L\-\_\-\-F\-U\-L\-L\-S\-C\-A\-L\-E\-\_\-9\-\_\-2\-: +-\/9.2g \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga0ceeaa64f528427ffca42afd45051df6}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Init@{L\-I\-S302\-D\-L\-\_\-\-Init}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Init@{L\-I\-S302\-D\-L\-\_\-\-Init}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf L\-I\-S302\-D\-L\-\_\-\-Init\-Type\-Def} $\ast$}]{L\-I\-S302\-D\-L\-\_\-\-Init\-Struct}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga0ceeaa64f528427ffca42afd45051df6}
+
+
+Set L\-I\-S302\-D\-L Initialization. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L\-I\-S302\-D\-L\-\_\-\-Config\-\_\-\-Struct,\-:} & pointer to a L\-I\-S302\-D\-L\-\_\-\-Config\-\_\-\-Type\-Def structure that contains the configuration setting for the L\-I\-S302\-D\-L. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga8b1f05ec087784131846221e7992e1b4}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config@{L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config@{L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config (
+\begin{DoxyParamCaption}
+\item[{{\bf L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config\-Type\-Def} $\ast$}]{L\-I\-S302\-D\-L\-\_\-\-Int\-Config\-Struct}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga8b1f05ec087784131846221e7992e1b4}
+
+
+Set L\-I\-S302\-D\-L Interrupt configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config\-\_\-\-Type\-Def,\-:} & pointer to a L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config\-\_\-\-Type\-Def structure that contains the configuration setting for the L\-I\-S302\-D\-L Interrupt. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga445e78cca4cd65f59e0ffaa3575db8ae}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Lowpower\-Cmd@{L\-I\-S302\-D\-L\-\_\-\-Lowpower\-Cmd}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Lowpower\-Cmd@{L\-I\-S302\-D\-L\-\_\-\-Lowpower\-Cmd}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Lowpower\-Cmd}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Lowpower\-Cmd (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{Low\-Power\-Mode}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga445e78cca4cd65f59e0ffaa3575db8ae}
+
+
+Change the lowpower mode for L\-I\-S302\-D\-L. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Low\-Power\-Mode,\-:} & new state for the lowpower mode. This parameter can be one of the following values\-: \begin{DoxyItemize}
+\item L\-I\-S302\-D\-L\-\_\-\-L\-O\-W\-P\-O\-W\-E\-R\-M\-O\-D\-E\-\_\-\-P\-O\-W\-E\-R\-D\-O\-W\-N\-: Power down mode \item L\-I\-S302\-D\-L\-\_\-\-L\-O\-W\-P\-O\-W\-E\-R\-M\-O\-D\-E\-\_\-\-A\-C\-T\-I\-V\-E\-: Active mode \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_gae578a971afc1699d6056937ad7604d0a}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Read@{L\-I\-S302\-D\-L\-\_\-\-Read}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Read@{L\-I\-S302\-D\-L\-\_\-\-Read}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Read}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Read (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t $\ast$}]{p\-Buffer, }
+\item[{uint8\-\_\-t}]{Read\-Addr, }
+\item[{uint16\-\_\-t}]{Num\-Byte\-To\-Read}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_gae578a971afc1699d6056937ad7604d0a}
+
+
+Reads a block of data from the L\-I\-S302\-D\-L. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Buffer} & \-: pointer to the buffer that receives the data read from the L\-I\-S302\-D\-L. \\
+\hline
+{\em Read\-Addr} & \-: L\-I\-S302\-D\-L's internal address to read from. \\
+\hline
+{\em Num\-Byte\-To\-Read} & \-: number of bytes to read from the L\-I\-S302\-D\-L. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_gaf31f5b65ff8d208eeabae1a8f294fcc2}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Read\-A\-C\-C@{L\-I\-S302\-D\-L\-\_\-\-Read\-A\-C\-C}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Read\-A\-C\-C@{L\-I\-S302\-D\-L\-\_\-\-Read\-A\-C\-C}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Read\-A\-C\-C}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Read\-A\-C\-C (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t $\ast$}]{out}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_gaf31f5b65ff8d208eeabae1a8f294fcc2}
+
+
+Read L\-I\-S302\-D\-L output register, and calculate the acceleration A\-C\-C\mbox{[}mg\mbox{]}=S\-E\-N\-S\-I\-T\-I\-V\-I\-T\-Y$\ast$ (out\-\_\-h$\ast$256+out\-\_\-l)/16 (12 bit rappresentation) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s16} & buffer to store data \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga34234db89f7d653fea3085007d3d9e0e}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Reboot\-Cmd@{L\-I\-S302\-D\-L\-\_\-\-Reboot\-Cmd}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Reboot\-Cmd@{L\-I\-S302\-D\-L\-\_\-\-Reboot\-Cmd}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Reboot\-Cmd}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Reboot\-Cmd (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga34234db89f7d653fea3085007d3d9e0e}
+
+
+Reboot memory content of L\-I\-S302\-D\-L. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga6ebadd4ac5226151b229303db49d2c0a}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-User\-Callback@{L\-I\-S302\-D\-L\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-User\-Callback}}
+\index{L\-I\-S302\-D\-L\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-User\-Callback@{L\-I\-S302\-D\-L\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-User\-Callback}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-User\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t L\-I\-S302\-D\-L\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-User\-Callback (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga6ebadd4ac5226151b229303db49d2c0a}
+
+
+Basic management of the timeout situation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None.} & \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga43f400565c47cdcf5fd19b8b601e7c41}{\index{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}!L\-I\-S302\-D\-L\-\_\-\-Write@{L\-I\-S302\-D\-L\-\_\-\-Write}}
+\index{L\-I\-S302\-D\-L\-\_\-\-Write@{L\-I\-S302\-D\-L\-\_\-\-Write}!STM32F4_DISCOVERY_LIS302DL_Exported_Functions@{S\-T\-M32\-F4\-\_\-\-D\-I\-S\-C\-O\-V\-E\-R\-Y\-\_\-\-L\-I\-S302\-D\-L\-\_\-\-Exported\-\_\-\-Functions}}
+\subsubsection[{L\-I\-S302\-D\-L\-\_\-\-Write}]{\setlength{\rightskip}{0pt plus 5cm}void L\-I\-S302\-D\-L\-\_\-\-Write (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t $\ast$}]{p\-Buffer, }
+\item[{uint8\-\_\-t}]{Write\-Addr, }
+\item[{uint16\-\_\-t}]{Num\-Byte\-To\-Write}
+\end{DoxyParamCaption}
+)}}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___exported___functions_ga43f400565c47cdcf5fd19b8b601e7c41}
+
+
+Writes one byte to the L\-I\-S302\-D\-L. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Buffer} & \-: pointer to the buffer containing the data to be written to the L\-I\-S302\-D\-L. \\
+\hline
+{\em Write\-Addr} & \-: L\-I\-S302\-D\-L's internal address to write to. \\
+\hline
+{\em Num\-Byte\-To\-Write,\-:} & Number of bytes to write. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}

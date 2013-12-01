@@ -1,0 +1,94 @@
+\hypertarget{_k_e_y_p_a_d_8c}{\section{src/\-K\-E\-Y\-P\-A\-D.c File Reference}
+\label{_k_e_y_p_a_d_8c}\index{src/\-K\-E\-Y\-P\-A\-D.\-c@{src/\-K\-E\-Y\-P\-A\-D.\-c}}
+}
+{\ttfamily \#include \char`\"{}K\-E\-Y\-P\-A\-D.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}cmsis\-\_\-os.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_k_e_y_p_a_d_8c_adf9c5b8684f160d3e248fa0daeb1ed3b}{K\-E\-Y\-P\-A\-D\-\_\-\-Init} (void)
+\begin{DoxyCompactList}\small\item\em Initialize the keypad. \end{DoxyCompactList}\item 
+uint8\-\_\-t \hyperlink{_k_e_y_p_a_d_8c_a891461796d09a88e91df7d9b6dc6d16e}{K\-E\-Y\-P\-A\-D\-\_\-\-Check} (void)
+\begin{DoxyCompactList}\small\item\em Check to see if a key is pressed, and if one is, which. \end{DoxyCompactList}\item 
+void \hyperlink{_k_e_y_p_a_d_8c_a17e9789a29a87d2df54f12b94dd1a0b6}{E\-X\-T\-I0\-\_\-\-I\-R\-Q\-Handler} (void)
+\begin{DoxyCompactList}\small\item\em The E\-X\-T\-I\-\_\-\-Line0 interrupt handler. \end{DoxyCompactList}\item 
+\hyperlink{structangle__data}{angle\-\_\-data} \hyperlink{_k_e_y_p_a_d_8c_ab43d81ce38b64bb6fda709ef4ab3c3ef}{K\-E\-Y\-P\-A\-D\-\_\-button\-To\-Angle} (uint8\-\_\-t button)
+\begin{DoxyCompactList}\small\item\em Convert a button to a set of angles.  Convert a button to a specified roll and pitch angles, unless the is not associated with one. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_k_e_y_p_a_d_8c_a33b9c4eeb27c98d308cb0b06abe079a6}{const os\-Thread\-Id {\bfseries B\-U\-T\-T\-O\-N\-\_\-tid}}\label{_k_e_y_p_a_d_8c_a33b9c4eeb27c98d308cb0b06abe079a6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ben Swearingen \href{mailto:benjamin.swearingen@mail.mcgill.ca}{\tt benjamin.\-swearingen@mail.\-mcgill.\-ca} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{_k_e_y_p_a_d_8c_a17e9789a29a87d2df54f12b94dd1a0b6}{\index{K\-E\-Y\-P\-A\-D.\-c@{K\-E\-Y\-P\-A\-D.\-c}!E\-X\-T\-I0\-\_\-\-I\-R\-Q\-Handler@{E\-X\-T\-I0\-\_\-\-I\-R\-Q\-Handler}}
+\index{E\-X\-T\-I0\-\_\-\-I\-R\-Q\-Handler@{E\-X\-T\-I0\-\_\-\-I\-R\-Q\-Handler}!KEYPAD.c@{K\-E\-Y\-P\-A\-D.\-c}}
+\subsubsection[{E\-X\-T\-I0\-\_\-\-I\-R\-Q\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}void E\-X\-T\-I0\-\_\-\-I\-R\-Q\-Handler (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_k_e_y_p_a_d_8c_a17e9789a29a87d2df54f12b94dd1a0b6}
+
+
+The E\-X\-T\-I\-\_\-\-Line0 interrupt handler. 
+
+\begin{DoxyNote}{Note}
+The interrupt handler checks whether tap is greater than 0. If it is, the value remains the same. If it is not, then tap is set to 13. Combined with the logic in main.\-c and a 25\-Hz clock, this creates a timeout of about half a second during which additional taps are not detected. 
+\end{DoxyNote}
+\hypertarget{_k_e_y_p_a_d_8c_ab43d81ce38b64bb6fda709ef4ab3c3ef}{\index{K\-E\-Y\-P\-A\-D.\-c@{K\-E\-Y\-P\-A\-D.\-c}!K\-E\-Y\-P\-A\-D\-\_\-button\-To\-Angle@{K\-E\-Y\-P\-A\-D\-\_\-button\-To\-Angle}}
+\index{K\-E\-Y\-P\-A\-D\-\_\-button\-To\-Angle@{K\-E\-Y\-P\-A\-D\-\_\-button\-To\-Angle}!KEYPAD.c@{K\-E\-Y\-P\-A\-D.\-c}}
+\subsubsection[{K\-E\-Y\-P\-A\-D\-\_\-button\-To\-Angle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf angle\-\_\-data} K\-E\-Y\-P\-A\-D\-\_\-button\-To\-Angle (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{button}
+\end{DoxyParamCaption}
+)}}\label{_k_e_y_p_a_d_8c_ab43d81ce38b64bb6fda709ef4ab3c3ef}
+
+
+Convert a button to a set of angles.  Convert a button to a specified roll and pitch angles, unless the is not associated with one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button,\-:} & The button pressed. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em The} & pitch and roll angles. \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{_k_e_y_p_a_d_8c_a891461796d09a88e91df7d9b6dc6d16e}{\index{K\-E\-Y\-P\-A\-D.\-c@{K\-E\-Y\-P\-A\-D.\-c}!K\-E\-Y\-P\-A\-D\-\_\-\-Check@{K\-E\-Y\-P\-A\-D\-\_\-\-Check}}
+\index{K\-E\-Y\-P\-A\-D\-\_\-\-Check@{K\-E\-Y\-P\-A\-D\-\_\-\-Check}!KEYPAD.c@{K\-E\-Y\-P\-A\-D.\-c}}
+\subsubsection[{K\-E\-Y\-P\-A\-D\-\_\-\-Check}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t K\-E\-Y\-P\-A\-D\-\_\-\-Check (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_k_e_y_p_a_d_8c_a891461796d09a88e91df7d9b6dc6d16e}
+
+
+Check to see if a key is pressed, and if one is, which. 
+
+Check to see if a key is pressed. If one is, determine which it s. 
+\begin{DoxyRetVals}{Return values}
+{\em The} & key that is pressed. \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{_k_e_y_p_a_d_8c_adf9c5b8684f160d3e248fa0daeb1ed3b}{\index{K\-E\-Y\-P\-A\-D.\-c@{K\-E\-Y\-P\-A\-D.\-c}!K\-E\-Y\-P\-A\-D\-\_\-\-Init@{K\-E\-Y\-P\-A\-D\-\_\-\-Init}}
+\index{K\-E\-Y\-P\-A\-D\-\_\-\-Init@{K\-E\-Y\-P\-A\-D\-\_\-\-Init}!KEYPAD.c@{K\-E\-Y\-P\-A\-D.\-c}}
+\subsubsection[{K\-E\-Y\-P\-A\-D\-\_\-\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void K\-E\-Y\-P\-A\-D\-\_\-\-Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_k_e_y_p_a_d_8c_adf9c5b8684f160d3e248fa0daeb1ed3b}
+
+
+Initialize the keypad. 
+
+Initialize the keypad with columns as outputs and rows as inputs. 

@@ -1,0 +1,59 @@
+\hypertarget{_m_o_t_o_r_8c}{\section{src/\-M\-O\-T\-O\-R.c File Reference}
+\label{_m_o_t_o_r_8c}\index{src/\-M\-O\-T\-O\-R.\-c@{src/\-M\-O\-T\-O\-R.\-c}}
+}
+{\ttfamily \#include \char`\"{}stm32f4\-\_\-discovery\-\_\-lis302dl.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}motor.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_m_o_t_o_r_8c_ad2ef03d9a8e1838fc208d66f5960ef64}{void {\bfseries init\-Motor\-R} (void)}\label{_m_o_t_o_r_8c_ad2ef03d9a8e1838fc208d66f5960ef64}
+
+\item 
+\hypertarget{_m_o_t_o_r_8c_a5ee8731ba2e99372067c68ad32c05818}{void {\bfseries init\-Motor\-P} (void)}\label{_m_o_t_o_r_8c_a5ee8731ba2e99372067c68ad32c05818}
+
+\item 
+\hypertarget{_m_o_t_o_r_8c_aa76e1ec1c4055cfa425807b667301435}{void {\bfseries Delay} (uint32\-\_\-t delay)}\label{_m_o_t_o_r_8c_aa76e1ec1c4055cfa425807b667301435}
+
+\item 
+\hypertarget{_m_o_t_o_r_8c_a50060772469636e80f3e636df63efde0}{void \hyperlink{_m_o_t_o_r_8c_a50060772469636e80f3e636df63efde0}{init\-Motors} (void)}\label{_m_o_t_o_r_8c_a50060772469636e80f3e636df63efde0}
+
+\begin{DoxyCompactList}\small\item\em Initializes both motors. \end{DoxyCompactList}\item 
+void \hyperlink{_m_o_t_o_r_8c_a4af506066c4bb16d6401b25adf3e5f75}{motor\-Move} (\hyperlink{structangle__data}{angle\-\_\-data} angle)
+\begin{DoxyCompactList}\small\item\em Moves the motors to the correct angles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_m_o_t_o_r_8c_a2afd107effd41cead748e5d5840c442d}{int {\bfseries t\-Roll}}\label{_m_o_t_o_r_8c_a2afd107effd41cead748e5d5840c442d}
+
+\item 
+\hypertarget{_m_o_t_o_r_8c_ab1facab5cece293582e329c8e3cf69e2}{int {\bfseries t\-Pitch}}\label{_m_o_t_o_r_8c_ab1facab5cece293582e329c8e3cf69e2}
+
+\item 
+\hypertarget{_m_o_t_o_r_8c_acb559820d9ca11295b4500f179ef6392}{int {\bfseries i}}\label{_m_o_t_o_r_8c_acb559820d9ca11295b4500f179ef6392}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Aqsa Ahmed \href{mailto:aqsa.ahmed@mail.mcgill.ca}{\tt aqsa.\-ahmed@mail.\-mcgill.\-ca} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{_m_o_t_o_r_8c_a4af506066c4bb16d6401b25adf3e5f75}{\index{M\-O\-T\-O\-R.\-c@{M\-O\-T\-O\-R.\-c}!motor\-Move@{motor\-Move}}
+\index{motor\-Move@{motor\-Move}!MOTOR.c@{M\-O\-T\-O\-R.\-c}}
+\subsubsection[{motor\-Move}]{\setlength{\rightskip}{0pt plus 5cm}void motor\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf angle\-\_\-data}}]{angle}
+\end{DoxyParamCaption}
+)}}\label{_m_o_t_o_r_8c_a4af506066c4bb16d6401b25adf3e5f75}
+
+
+Moves the motors to the correct angles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle,\-:} & The angle to move the motors to. \\
+\hline
+\end{DoxyParams}

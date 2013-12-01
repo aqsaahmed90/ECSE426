@@ -1,0 +1,70 @@
+\hypertarget{stm32f4__discovery__lis302dl_8c}{\section{src/stm32f4\-\_\-discovery\-\_\-lis302dl.c File Reference}
+\label{stm32f4__discovery__lis302dl_8c}\index{src/stm32f4\-\_\-discovery\-\_\-lis302dl.\-c@{src/stm32f4\-\_\-discovery\-\_\-lis302dl.\-c}}
+}
+
+
+This file provides a set of functions needed to manage the L\-I\-S302\-D\-L M\-E\-M\-S accelerometer available on S\-T\-M32\-F4-\/\-Discovery Kit.  
+
+
+{\ttfamily \#include \char`\"{}stm32f4\-\_\-discovery\-\_\-lis302dl.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___defines_ga5a85ad7ff6c71218205aa24a7b9e9709}{\#define {\bfseries R\-E\-A\-D\-W\-R\-I\-T\-E\-\_\-\-C\-M\-D}~((uint8\-\_\-t)0x80)}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___defines_ga5a85ad7ff6c71218205aa24a7b9e9709}
+
+\item 
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___defines_ga8978e114e63e88d9763967ab84388774}{\#define {\bfseries M\-U\-L\-T\-I\-P\-L\-E\-B\-Y\-T\-E\-\_\-\-C\-M\-D}~((uint8\-\_\-t)0x40)}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___defines_ga8978e114e63e88d9763967ab84388774}
+
+\item 
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___defines_gadc81a065700d3af56b6fb631585e3641}{\#define {\bfseries D\-U\-M\-M\-Y\-\_\-\-B\-Y\-T\-E}~((uint8\-\_\-t)0x00)}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___defines_gadc81a065700d3af56b6fb631585e3641}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_ga0ceeaa64f528427ffca42afd45051df6}{L\-I\-S302\-D\-L\-\_\-\-Init} (\hyperlink{struct_l_i_s302_d_l___init_type_def}{L\-I\-S302\-D\-L\-\_\-\-Init\-Type\-Def} $\ast$L\-I\-S302\-D\-L\-\_\-\-Init\-Struct)
+\begin{DoxyCompactList}\small\item\em Set L\-I\-S302\-D\-L Initialization. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_ga0c2ce8efd66b092a82e64f88ed5b9e9a}{L\-I\-S302\-D\-L\-\_\-\-Filter\-Config} (\hyperlink{struct_l_i_s302_d_l___filter_config_type_def}{L\-I\-S302\-D\-L\-\_\-\-Filter\-Config\-Type\-Def} $\ast$L\-I\-S302\-D\-L\-\_\-\-Filter\-Config\-Struct)
+\begin{DoxyCompactList}\small\item\em Set L\-I\-S302\-D\-L Internal High Pass Filter configuration. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_ga0c6ea80d35be5abeb3bd1d06355481e8}{L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config} (\hyperlink{struct_l_i_s302_d_l___interrupt_config_type_def}{L\-I\-S302\-D\-L\-\_\-\-Interrupt\-Config\-Type\-Def} $\ast$L\-I\-S302\-D\-L\-\_\-\-Int\-Config\-Struct)
+\begin{DoxyCompactList}\small\item\em Set L\-I\-S302\-D\-L Interrupt configuration. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_ga445e78cca4cd65f59e0ffaa3575db8ae}{L\-I\-S302\-D\-L\-\_\-\-Lowpower\-Cmd} (uint8\-\_\-t Low\-Power\-Mode)
+\begin{DoxyCompactList}\small\item\em Change the lowpower mode for L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_ga8542910cb1e71d7031fab7a462c768bd}{L\-I\-S302\-D\-L\-\_\-\-Data\-Rate\-Cmd} (uint8\-\_\-t Data\-Rate\-Value)
+\begin{DoxyCompactList}\small\item\em Data Rate command. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_gadb44926aefe4fc8e6cdff256077c0bf4}{L\-I\-S302\-D\-L\-\_\-\-Full\-Scale\-Cmd} (uint8\-\_\-t F\-S\-\_\-value)
+\begin{DoxyCompactList}\small\item\em Change the Full Scale of L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_ga34234db89f7d653fea3085007d3d9e0e}{L\-I\-S302\-D\-L\-\_\-\-Reboot\-Cmd} (void)
+\begin{DoxyCompactList}\small\item\em Reboot memory content of L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_ga43f400565c47cdcf5fd19b8b601e7c41}{L\-I\-S302\-D\-L\-\_\-\-Write} (uint8\-\_\-t $\ast$p\-Buffer, uint8\-\_\-t Write\-Addr, uint16\-\_\-t Num\-Byte\-To\-Write)
+\begin{DoxyCompactList}\small\item\em Writes one byte to the L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_gae578a971afc1699d6056937ad7604d0a}{L\-I\-S302\-D\-L\-\_\-\-Read} (uint8\-\_\-t $\ast$p\-Buffer, uint8\-\_\-t Read\-Addr, uint16\-\_\-t Num\-Byte\-To\-Read)
+\begin{DoxyCompactList}\small\item\em Reads a block of data from the L\-I\-S302\-D\-L. \end{DoxyCompactList}\item 
+void \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_gaf31f5b65ff8d208eeabae1a8f294fcc2}{L\-I\-S302\-D\-L\-\_\-\-Read\-A\-C\-C} (int32\-\_\-t $\ast$out)
+\begin{DoxyCompactList}\small\item\em Read L\-I\-S302\-D\-L output register, and calculate the acceleration A\-C\-C\mbox{[}mg\mbox{]}=S\-E\-N\-S\-I\-T\-I\-V\-I\-T\-Y$\ast$ (out\-\_\-h$\ast$256+out\-\_\-l)/16 (12 bit rappresentation) \end{DoxyCompactList}\item 
+uint32\-\_\-t \hyperlink{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___functions_ga6ebadd4ac5226151b229303db49d2c0a}{L\-I\-S302\-D\-L\-\_\-\-T\-I\-M\-E\-O\-U\-T\-\_\-\-User\-Callback} (void)
+\begin{DoxyCompactList}\small\item\em Basic management of the timeout situation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___defines_ga943b294f0781c528d4d85a5f1f54d8c9}{\-\_\-\-\_\-\-I\-O uint32\-\_\-t {\bfseries L\-I\-S302\-D\-L\-Timeout} = L\-I\-S302\-D\-L\-\_\-\-F\-L\-A\-G\-\_\-\-T\-I\-M\-E\-O\-U\-T}\label{group___s_t_m32_f4___d_i_s_c_o_v_e_r_y___l_i_s302_d_l___private___defines_ga943b294f0781c528d4d85a5f1f54d8c9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file provides a set of functions needed to manage the L\-I\-S302\-D\-L M\-E\-M\-S accelerometer available on S\-T\-M32\-F4-\/\-Discovery Kit. \begin{DoxyAuthor}{Author}
+M\-C\-D Application Team 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+V1.\-1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+28-\/\-October-\/2011 
+\end{DoxyDate}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+T\-H\-E P\-R\-E\-S\-E\-N\-T F\-I\-R\-M\-W\-A\-R\-E W\-H\-I\-C\-H I\-S F\-O\-R G\-U\-I\-D\-A\-N\-C\-E O\-N\-L\-Y A\-I\-M\-S A\-T P\-R\-O\-V\-I\-D\-I\-N\-G C\-U\-S\-T\-O\-M\-E\-R\-S W\-I\-T\-H C\-O\-D\-I\-N\-G I\-N\-F\-O\-R\-M\-A\-T\-I\-O\-N R\-E\-G\-A\-R\-D\-I\-N\-G T\-H\-E\-I\-R P\-R\-O\-D\-U\-C\-T\-S I\-N O\-R\-D\-E\-R F\-O\-R T\-H\-E\-M T\-O S\-A\-V\-E T\-I\-M\-E. A\-S A R\-E\-S\-U\-L\-T, S\-T\-M\-I\-C\-R\-O\-E\-L\-E\-C\-T\-R\-O\-N\-I\-C\-S S\-H\-A\-L\-L N\-O\-T B\-E H\-E\-L\-D L\-I\-A\-B\-L\-E F\-O\-R A\-N\-Y D\-I\-R\-E\-C\-T, I\-N\-D\-I\-R\-E\-C\-T O\-R C\-O\-N\-S\-E\-Q\-U\-E\-N\-T\-I\-A\-L D\-A\-M\-A\-G\-E\-S W\-I\-T\-H R\-E\-S\-P\-E\-C\-T T\-O A\-N\-Y C\-L\-A\-I\-M\-S A\-R\-I\-S\-I\-N\-G F\-R\-O\-M T\-H\-E C\-O\-N\-T\-E\-N\-T O\-F S\-U\-C\-H F\-I\-R\-M\-W\-A\-R\-E A\-N\-D/\-O\-R T\-H\-E U\-S\-E M\-A\-D\-E B\-Y C\-U\-S\-T\-O\-M\-E\-R\-S O\-F T\-H\-E C\-O\-D\-I\-N\-G I\-N\-F\-O\-R\-M\-A\-T\-I\-O\-N C\-O\-N\-T\-A\-I\-N\-E\-D H\-E\-R\-E\-I\-N I\-N C\-O\-N\-N\-E\-C\-T\-I\-O\-N W\-I\-T\-H T\-H\-E\-I\-R P\-R\-O\-D\-U\-C\-T\-S.
+
+\subsubsection*{\begin{center}\copyright C\-O\-P\-Y\-R\-I\-G\-H\-T 2011 S\-T\-Microelectronics\end{center} }

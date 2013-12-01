@@ -1,0 +1,63 @@
+\hypertarget{_a_c_c_e_l_8h}{\section{src/\-A\-C\-C\-E\-L.h File Reference}
+\label{_a_c_c_e_l_8h}\index{src/\-A\-C\-C\-E\-L.\-h@{src/\-A\-C\-C\-E\-L.\-h}}
+}
+{\ttfamily \#include \char`\"{}stm32f4xx.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structaccel__data}{accel\-\_\-data}
+\item 
+struct \hyperlink{structangle__data}{angle\-\_\-data}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_a_c_c_e_l_8h_a088d0dba5f2deb7c87f4e94f9576e7d2}{A\-C\-C\-E\-L\-\_\-\-Config} (void)
+\begin{DoxyCompactList}\small\item\em Configures and initializes the accelerometer. \end{DoxyCompactList}\item 
+\hypertarget{_a_c_c_e_l_8h_af3f65b7dca37c2ac5761f5c357ed599f}{void \hyperlink{_a_c_c_e_l_8h_af3f65b7dca37c2ac5761f5c357ed599f}{Clear\-\_\-\-Accel\-\_\-\-Int} (void)}\label{_a_c_c_e_l_8h_af3f65b7dca37c2ac5761f5c357ed599f}
+
+\begin{DoxyCompactList}\small\item\em Reads from L\-I\-S302\-D\-L\-\_\-\-C\-L\-I\-C\-K\-\_\-\-S\-R\-C\-\_\-\-R\-E\-G\-\_\-\-A\-D\-D\-R to unlatch the interrupt. \end{DoxyCompactList}\item 
+\hyperlink{structangle__data}{angle\-\_\-data} \hyperlink{_a_c_c_e_l_8h_a43eddb791f1ac29ec7c8407204dfade1}{read\-\_\-\-Accelerometer} (void)
+\begin{DoxyCompactList}\small\item\em The E\-X\-T\-I\-\_\-\-Line0 interrupt handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ben Swearingen \href{mailto:benjamin.swearingen@mail.mcgill.ca}{\tt benjamin.\-swearingen@mail.\-mcgill.\-ca} 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{_a_c_c_e_l_8h_a088d0dba5f2deb7c87f4e94f9576e7d2}{\index{A\-C\-C\-E\-L.\-h@{A\-C\-C\-E\-L.\-h}!A\-C\-C\-E\-L\-\_\-\-Config@{A\-C\-C\-E\-L\-\_\-\-Config}}
+\index{A\-C\-C\-E\-L\-\_\-\-Config@{A\-C\-C\-E\-L\-\_\-\-Config}!ACCEL.h@{A\-C\-C\-E\-L.\-h}}
+\subsubsection[{A\-C\-C\-E\-L\-\_\-\-Config}]{\setlength{\rightskip}{0pt plus 5cm}void A\-C\-C\-E\-L\-\_\-\-Config (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_a_c_c_e_l_8h_a088d0dba5f2deb7c87f4e94f9576e7d2}
+
+
+Configures and initializes the accelerometer. 
+
+\begin{DoxyNote}{Note}
+This method configures and initializes the accelerometer. Power mode is set to active, data rate to 100, all axes are enabled, full scale is set to 2\-\_\-3, and self test is set to normal. 
+\end{DoxyNote}
+\hypertarget{_a_c_c_e_l_8h_a43eddb791f1ac29ec7c8407204dfade1}{\index{A\-C\-C\-E\-L.\-h@{A\-C\-C\-E\-L.\-h}!read\-\_\-\-Accelerometer@{read\-\_\-\-Accelerometer}}
+\index{read\-\_\-\-Accelerometer@{read\-\_\-\-Accelerometer}!ACCEL.h@{A\-C\-C\-E\-L.\-h}}
+\subsubsection[{read\-\_\-\-Accelerometer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf angle\-\_\-data} read\-\_\-\-Accelerometer (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_a_c_c_e_l_8h_a43eddb791f1ac29ec7c8407204dfade1}
+
+
+The E\-X\-T\-I\-\_\-\-Line0 interrupt handler. 
+
+\begin{DoxyNote}{Note}
+The interrupt handler checks whether tap is greater than 0. If it is, the value remains the same. If it is not, then tap is set to 13. Combined with the logic in main.\-c and a 25\-Hz clock, this creates a timeout of about half a second during which additional taps are not detected. Reads data from the accelerometer and returns an \hyperlink{structaccel__data}{accel\-\_\-data}.
+
+Reads data from the accelerometer and returns three signed integers contained within an \hyperlink{structaccel__data}{accel\-\_\-data} packet. It starts reading at address 0x29, which corresponds to Out\-\_\-\-X, and reads the next five registers that represent the three axes. The results must be casted to a signed integer, and then multiplied by 18 as each L\-S\-B represents 18mgs.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+the pitch and roll in degrees. 
+\end{DoxyReturn}
